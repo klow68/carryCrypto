@@ -87,4 +87,12 @@ def encrypt_feistel(bloc,Key):
 	return G+D
 
 
+mot='AAAAAAAA'
+key='AZER'
+cypher_text=''
+save_mot = mot
+for i in range (0,len(mot),4):
+	cypher_text += encrypt_feistel(mot[:4],key);
+	mot = mot[4:]
+print cypher_text
 print encrypt_feistel('AAAA','AZER')
