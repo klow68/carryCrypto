@@ -26,33 +26,59 @@ def toilettage_binaire(binaire):
 	return cypherText
 
 def encrypt_binaire(lettre):
+	print lettre
 	return toilettage_binaire(bin(dictionnaire[lettre]))
-
+def encrypt_mot_binaire(mot):
+	mot_bin = ''
+	for i in mot:
+		mot_bin += encrypt_binaire(i)
+	return mot_bin
 def decrypt_binaire(binaire):
 	#return dictionnaire[int(binaire,2)]
 	dic_bin[(int(binaire,2))]
-	print dic_bin[(int(binaire,2))]
+	return dic_bin[(int(binaire,2))]
 
 def function(msg,Key):
 	#Decalage binaire
 	msg_bin = encrypt_binaire(msg[0]) + encrypt_binaire(msg[1])
-	print msg_bin
+	#print msg_bin
 	msg_fin=''
 	for i in range(1,len(msg_bin)):
 		msg_fin+= msg_bin[i]
 	msg_fin+=msg_bin[0]
-	print msg_fin
+	#print msg_fin
 	#ou exclusif
-	msg_tmp = ''
-	for i in range(0,len(msg_fin)):
-		if (msg_fin[i] == Key[i] and Key[i]=='1'):
-			msg_tmp += '0'
-		elif msg_fin[i] == '1' or Key[i]=='1':
-			msg_tmp += '1'
-		else:
-			msg_tmp += msg_fin[i]
-	return msg_tmp
+	return ouExclusif(msg_fin,Key)
 
-decrypt_binaire( encrypt_binaire('Z'))
-print function('ZB','0000000000')
-	
+def ouExclusif(A,B):
+	resultat = ''
+	for i in range(0,len(A)):
+		if (A[i] == B[i] and B[i]=='1'):
+			resultat += '0'
+		elif A[i] == '1' or B[i]=='1':
+			resultat += '1'
+		else:
+			resultat += '0'
+	return resultat
+
+def encrypt_feistel(bloc,Key):
+	G = bloc[:2]
+	D = bloc[2:]
+	for i in range(len(Key)):
+		#copie du bloc de droite
+		D2 = D
+		#la cle prend les deux premiers caracteres
+		Key_feistel = Key[:2]
+		#La cle globale est décalée de 1 caractere
+		Key = Key[1:]+Key[:1]
+		#On chiffre la partie droite
+		D = function(D,encrypt_mot_binaire(Key))
+
+		#Maintenant, il faut réaliser le ou exclusif
+		D = ouExclusif(encrypt_mot_binaire(D),encrypt_mot_binaire(G))
+		G = D2
+
+	return G+D
+
+
+print encrypt_feistel('AAAA','AZER')
