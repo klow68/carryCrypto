@@ -21,12 +21,10 @@ def toilettage_binaire(binaire):
 
 	for i in range(2,taille+2):
 		cypherText+= binaire[i]
-	
 
 	return cypherText
 
 def encrypt_binaire(lettre):
-	print lettre
 	return toilettage_binaire(bin(dictionnaire[lettre]))
 def encrypt_mot_binaire(mot):
 	mot_bin = ''
@@ -37,6 +35,14 @@ def decrypt_binaire(binaire):
 	#return dictionnaire[int(binaire,2)]
 	dic_bin[(int(binaire,2))]
 	return dic_bin[(int(binaire,2))]
+
+def decrypt_mot_binaire(mot_bin):
+	mot=''
+	for i in range(0,len(mot_bin),5):
+		mot+=decrypt_binaire(mot_bin[:5])
+		mot_bin=mot_bin[5:]
+
+	return mot
 
 def function(msg,Key):
 	#Decalage binaire
@@ -73,9 +79,9 @@ def encrypt_feistel(bloc,Key):
 		Key = Key[1:]+Key[:1]
 		#On chiffre la partie droite
 		D = function(D,encrypt_mot_binaire(Key))
-
+		
 		#Maintenant, il faut réaliser le ou exclusif
-		D = ouExclusif(encrypt_mot_binaire(D),encrypt_mot_binaire(G))
+		D = decrypt_mot_binaire(ouExclusif(D,encrypt_mot_binaire(G)))
 		G = D2
 
 	return G+D
