@@ -34,14 +34,23 @@ def decrypt_binaire(binaire):
 	print dic_bin[(int(binaire,2))]
 
 def function(msg,Key):
+	#Decalage binaire
 	msg_bin = encrypt_binaire(msg[0]) + encrypt_binaire(msg[1])
 	print msg_bin
 	msg_fin=''
 	for i in range(1,len(msg_bin)):
 		msg_fin+= msg_bin[i]
 	msg_fin+=msg_bin[0]
-	return msg_fin
+	print msg_fin
+	#ou exclusif
+	msg_tmp = ''
+	for i in range(0,len(msg_fin)):
+		if (msg_fin[i] == Key[i] and Key[i]=='1'):
+			msg_tmp += '0'
+		else:
+			msg_tmp += msg_fin[i]
+	return msg_tmp
 
 decrypt_binaire( encrypt_binaire('Z'))
-print function('ZB',0)
+print function('ZB','0000000000')
 	
