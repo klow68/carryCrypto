@@ -70,7 +70,8 @@ def ouExclusif(A,B):
 def encrypt_feistel(bloc,Key):
 	G = bloc[:2]
 	D = bloc[2:]
-	for i in range(1):
+	print "encrypt"
+	for i in range(4):
 		#copie du bloc de droite
 		D2 = D
 		#la cle prend les deux premiers caracteres
@@ -78,6 +79,7 @@ def encrypt_feistel(bloc,Key):
 		#La cle globale est décalée de 1 caractere
 		Key = Key[1:]+Key[:1]
 		#On chiffre la partie droite
+		#print "key:"+Key_feistel
 		D = function(D,encrypt_mot_binaire(Key_feistel))
 		
 		#Maintenant, il faut réaliser le ou exclusif
@@ -87,19 +89,21 @@ def encrypt_feistel(bloc,Key):
 	return G+D
 
 def decrypt_feistel(bloc,Key):
-	G = bloc[:2]
-	D = bloc[2:]
+	D = bloc[:2]
+	G = bloc[2:]
 	Key = Key[3:]+Key[:3]
-	print Key
-	for i in range(1):
+	#print Key
+	print "Decrypt"
+	for i in range(4):
 		#copie du bloc de droite
 		D2 = D
 		#la cle prend les deux premiers caracteres
 		Key_feistel = Key[:2]
 		#La cle globale est décalée de 1 caractere
 		Key = Key[3:]+Key[:3]
-		print Key
+		#print Key
 		#On chiffre la partie droite
+		#print "key:"+Key_feistel
 		D = function(D,encrypt_mot_binaire(Key_feistel))
 		
 		#Maintenant, il faut réaliser le ou exclusif
@@ -126,7 +130,8 @@ for i in range (0,len(cypher_text),4):
 
 print "\n"+resultat
 
-print "\n"+decrypt_feistel('MYMW',key)
+
+
 
 
 
