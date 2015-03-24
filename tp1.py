@@ -47,6 +47,8 @@ def function(msg,Key):
 	for i in range(0,len(msg_fin)):
 		if (msg_fin[i] == Key[i] and Key[i]=='1'):
 			msg_tmp += '0'
+		elif msg_fin[i] == '1' or Key[i]=='1':
+			msg_tmp += '1'
 		else:
 			msg_tmp += msg_fin[i]
 	return msg_tmp
