@@ -1,6 +1,9 @@
 #!/usr/bin/python
 #-*-coding:utf8-*-
 
+# librairie permettant d'utiliser des pattern sur une chaine de texte
+import re
+
 NB_BIT = 5
 
 dictionnaire = {'A': 0,'B':1,'C':2,'D':3,'E':4,
@@ -70,7 +73,7 @@ def ouExclusif(A,B):
 def encrypt_feistel(bloc,Key):
 	G = bloc[:2]
 	D = bloc[2:]
-	print "encrypt"
+	#print "encrypt"
 	for i in range(4):
 		#copie du bloc de droite
 		D2 = D
@@ -93,7 +96,7 @@ def decrypt_feistel(bloc,Key):
 	G = bloc[2:]
 	Key = Key[3:]+Key[:3]
 	#print Key
-	print "Decrypt"
+	#print "Decrypt"
 	for i in range(4):
 		#copie du bloc de droite
 		D2 = D
@@ -110,25 +113,57 @@ def decrypt_feistel(bloc,Key):
 		D = decrypt_mot_binaire(ouExclusif(D,encrypt_mot_binaire(G)))
 		G = D2
 
-	return G+D
+	return D+G
+
+def tailleTexteMod4(mot):
+	space=''
+	if len(mot)%4 != 0:
+		nb_space =4-len(mot)%4
+		for i in range(nb_space):
+			space+=' '
+	return mot+space
+
+def verif_texte(mot):
+	resultat = 0
+	if re.search("['\"²&é~#{}()\[\]\-|è`_\ç^à@°=+]",mot):
+		resultat = 1
+		print "\n# Texte non valide : "+mot+"\n"
+		
+	return resultat
 
 
-mot='AAAA'
+#******************************** CBC *********************************
+print "# ECB encryption #\n"
+
+mot='Je suis un ponney'
+mot = mot.upper()
+mot=tailleTexteMod4(mot)
+if verif_texte(mot)==1:
+	exit(0)
+
+print " Message   : "+mot
+
 key='KXCX'
 cypher_text=''
 resultat =''
-save_mot = mot
+#save_mot = mot
+
 for i in range (0,len(mot),4):
 	cypher_text += encrypt_feistel(mot[:4],key);
 	mot = mot[4:]
 
-print "\n"+cypher_text
+print "\n Encrypter : "+cypher_text
 
 for i in range (0,len(cypher_text),4):
 	resultat += decrypt_feistel(cypher_text[:4],key)
 	cypher_text = cypher_text[4:]
 
-print "\n"+resultat
+print "\n Decrypter : "+resultat
+
+
+#******************************** CBC *********************************
+
+print "\n#CBC encryption #"
 
 
 
