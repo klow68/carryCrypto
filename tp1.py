@@ -1,6 +1,8 @@
 #!/usr/bin/python
 #-*-coding:utf8-*-
 
+# fonction random
+import random
 # librairie permettant d'utiliser des pattern sur une chaine de texte
 import re
 
@@ -125,15 +127,15 @@ def tailleTexteMod4(mot):
 
 def verif_texte(mot):
 	resultat = 0
-	if re.search("['\"²&é~#{}()\[\]\-|è`_\ç^à@°=+]",mot):
+	if re.search("['\"²&é~#{}()\[\]\-|è`_\ç^à@°=+0-9]",mot):
 		resultat = 1
 		print "\n# Texte non valide : "+mot+"\n"
 		
 	return resultat
 
 
-#******************************** CBC *********************************
-print "# ECB encryption #\n"
+#******************************** EBC *********************************
+print "\n# ECB encryption #\n"
 
 mot='Je suis un ponney'
 mot = mot.upper()
@@ -148,22 +150,79 @@ cypher_text=''
 resultat =''
 #save_mot = mot
 
+#Encryption
 for i in range (0,len(mot),4):
 	cypher_text += encrypt_feistel(mot[:4],key);
 	mot = mot[4:]
 
 print "\n Encrypter : "+cypher_text
 
+
+#Decryption
 for i in range (0,len(cypher_text),4):
 	resultat += decrypt_feistel(cypher_text[:4],key)
 	cypher_text = cypher_text[4:]
 
-print "\n Decrypter : "+resultat
+print "\n Decrypter : "+resultat+"\n"
 
 
 #******************************** CBC *********************************
 
-print "\n#CBC encryption #"
+def vecteur_initialisation():
+	length = len(dictionnaire) -1
+	# 4 lettre random
+	return dic_bin[random.randint(0,length)]+dic_bin[random.randint(0,length)]+dic_bin[random.randint(0,length)]+dic_bin[random.randint(0,length)]
+
+def encrypt_cbc(mot,Key,VI):
+	key = encrypt_mot_binaire(Key)
+	res=''
+	#print "encrypt"
+	VI = encrypt_mot_binaire(VI)
+	
+	for i in range (0,len(mot),4):
+		#passage des 4 premier caractère en binaire
+		plain_bin = encrypt_mot_binaire(mot[:4])
+		#plain text XOR Vecteur d'initialisation
+		cypher_text = ouExclusif(plain_bin[:20],VI)
+		#passage en caractère 
+		cypher_text = decrypt_mot_binaire(cypher_text)
+		#print cypher_text
+		cypher_text = encrypt_feistel(cypher_text,Key)
+
+		res += cypher_text
+		
+		VI = encrypt_mot_binaire(cypher_text)
+
+		#supression des 4 premier caractère déjà crypter
+		mot = mot[4:]
+
+	return res
+
+
+
+print "\n# CBC encryption #\n"
+
+crypt=''
+decrypt=''
+
+mot='Je suis un ponney'
+mot = mot.upper()
+mot=tailleTexteMod4(mot)
+if verif_texte(mot)==1:
+	exit(0)
+
+key='KXCX'
+
+VI = vecteur_initialisation()
+
+print " Vect Init : "+VI
+
+print "\n Message   : "+mot
+
+crypt = encrypt_cbc(mot,key,VI)
+
+print "\n Encrypter : "+crypt
+
 
 
 
