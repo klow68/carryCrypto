@@ -127,6 +127,7 @@ def tailleTexteMod4(mot):
 
 def verif_texte(mot):
 	resultat = 0
+	# liste des caractères interdit
 	if re.search("['\"²&é~#{}()\[\]\-|è`_\ç^à@°=+0-9]",mot):
 		resultat = 1
 		print "\n# Texte non valide : "+mot+"\n"
@@ -173,7 +174,7 @@ def vecteur_initialisation():
 	# 4 lettre random
 	return dic_bin[random.randint(0,length)]+dic_bin[random.randint(0,length)]+dic_bin[random.randint(0,length)]+dic_bin[random.randint(0,length)]
 
-def encrypt_cbc(mot,Key,VI):
+def encrypt_CBC(mot,Key,VI):
 	key = encrypt_mot_binaire(Key)
 	res=''
 	#print "encrypt"
@@ -192,6 +193,25 @@ def encrypt_cbc(mot,Key,VI):
 		res += cypher_text
 		
 		VI = encrypt_mot_binaire(cypher_text)
+
+		#supression des 4 premier caractère déjà crypter
+		mot = mot[4:]
+
+	return res
+
+def decrypt_CBC(mot,Key,VI):
+	res=''
+	VI = encrypt_mot_binaire(VI)
+
+	for i in range (0,len(mot),4):
+		#passage des 4 premier caractère en binaire
+		cipher_text = decrypt_feistel(mot[:4],Key)
+
+		cipher_text = ouExclusif(encrypt_mot_binaire(cipher_text),VI) 
+
+		res += decrypt_mot_binaire(cipher_text)
+		
+		VI = encrypt_mot_binaire(mot[:4])
 
 		#supression des 4 premier caractère déjà crypter
 		mot = mot[4:]
@@ -219,13 +239,12 @@ print " Vect Init : "+VI
 
 print "\n Message   : "+mot
 
-crypt = encrypt_cbc(mot,key,VI)
+crypt = encrypt_CBC(mot,key,VI)
 
 print "\n Encrypter : "+crypt
 
+decrypt = decrypt_CBC(crypt,key,VI)
 
-
-
-
+print "\n Decrypter : "+decrypt+"\n"
 
 
