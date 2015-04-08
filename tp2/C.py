@@ -19,29 +19,36 @@ def search_s_and_d(n):
 		t = t/2
 		s +=1
 
-def miller_rabin(n,k = 7):
-	#n-1 = 2**s*d trouver s et d
-	if n < 2:
-		return false
-	r = 0
-	s = n-1
-	while s % 2 == 0:
-		r +=1
-		s //=2
+#liste des primitifs de n
+def primes(n):
+    prime = []
+    d = 2
+    while d*d <= n:
+        while (n % d) == 0:
+            prime.append(d)
+            n //= d
+        d += 1
+    if n > 1:
+       prime.append(n)
+    return prime
 
+#Test de primatlité
+def lucas_lehmer(n,k = 7):
+	# n>2
+	if n<2:
+		return False
+	# le test de primalité de Lucas Lehmer ne marche que pour les nombre impairs
+	if n==2:
+		return True
 	for _ in range(k):
-		a = random.randint(2,n-2)
-		# ---------exponentiation rapide
-		x = (a**s) % n
-		#pow(a,s,n)
-		#if x == 1 or x == n-1
+		a = random.randint(3,n-2)
+		if exponentiation_modulaire_rapide(a,n-1,n) != 1:
+			return False
+		for q in primes(n-1):
+			if exponentiation_modulaire_rapide(a,(n-1)/q,n) == 1:
+				return False
 
-		for ri in range(s-1):
-			z = (a**(2**ri)*d) % n
-			if x!=1 and z!=-1:
-				return false
-	return true
-
+	return True
 
 def exponentiation_modulaire_rapide(g,d,n):
 	d = bin(d)
@@ -106,9 +113,29 @@ def inverse_modulaire(a,b): #inverse de a modulo b
 	#print u[M]
 	return u[M]
 
+def n_et_phi_de_n(p,q):
+	n = p*q
+	phi = (p-1)*(q-1)
+
+	return [n,phi]
+
+def e_aleatoire(phi):
+	d = random.randint(2,phi-1)
+	while pgcd(d,phi) != 1:
+		d = random.randint(1,phi)
+	return d
+
 	
-		
-	
+rand = random.randint(1000,10000)	
+while not lucas_lehmer(rand):
+	rand = random.randint(1000,10000)
+
+print rand
+
 print inverse_modulaire(75,28)	  
 
 print exponentiation_modulaire_rapide(41,37,527)
+
+print e_aleatoire(60)
+
+
