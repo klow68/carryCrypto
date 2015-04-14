@@ -148,7 +148,7 @@ def generation():
 	#test d correct
 	#print __exponentiation_modulaire_rapide(d*e,0,n)==1
 
-	return e,d
+	return e,d,n
 
 
 

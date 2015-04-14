@@ -5,7 +5,7 @@ import random
 import sys
 import math
 import C as c
-import B as b
+import A as a
 
 dictionnaire = {'A': 0,'B':1,'C':2,'D':3,'E':4,
 'F':5,'G':6,'H':7,'I':8,'J':9,
@@ -47,10 +47,9 @@ def get_cle_publique():
 	return e
 
 def envoie_message_to_B(msg,n):
-	cle_B = b.get_cle_publique()
-	msg_crypter = __exponentiation_modulaire_rapide(msg,cle_B,n)
+	cle_A = a.get_cle_publique()
+	msg_crypter = __exponentiation_modulaire_rapide(msg,cle_A,n)
 	return msg_crypter
-
 
 # excecute seulement si on lance B.py
 if __name__ == '__main__':	
