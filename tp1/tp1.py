@@ -85,11 +85,16 @@ def encrypt_feistel(bloc,Key):
 		Key = Key[1:]+Key[:1]
 		#On chiffre la partie droite
 		#print "key:"+Key_feistel
+		print G+" : "+D +" ////////// "+Key_feistel 
+
 		D = function(D,encrypt_mot_binaire(Key_feistel))
 		
 		#Maintenant, il faut réaliser le ou exclusif
 		D = decrypt_mot_binaire(ouExclusif(D,encrypt_mot_binaire(G)))
 		G = D2
+
+		print G+" : "+D
+		print Key_feistel
 
 	return G+D
 
@@ -138,7 +143,7 @@ def verif_texte(mot):
 #******************************** EBC *********************************
 print "\n# ECB encryption #\n"
 
-mot='Je suis un ponney'
+mot='AAAA??BB'
 mot = mot.upper()
 mot=tailleTexteMod4(mot)
 if verif_texte(mot)==1:
