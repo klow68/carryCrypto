@@ -60,8 +60,7 @@ def envoie_message_to_B(msg):
 	print cle_B
 	msg_crypter = []
 	for caract in msg:
-		print caract
-		msg_crypter.append(__exponentiation_modulaire_rapide(toInt(caract),cle_B[0],cle_B[1]))
+		msg_crypter.append(__exponentiation_modulaire_rapide(toInt(caract),int(cle_B[0]),int(cle_B[1])))
 	return msg_crypter
 
 def decrypt_message_from_B(msg_crypt):
@@ -74,8 +73,9 @@ def decrypt_message_from_B(msg_crypt):
 
 # excecute seulement si on lance B.py
 if __name__ == '__main__':
+	b.generation()
 	generation()
 	print "e : "+str(e)
 	print "d : "+str(d)
 	print "n : "+str(n)
-	print envoie_message_to_B(['A','B'])
+	print b.decrypt_message_from_A(envoie_message_to_B(['A','B']))
