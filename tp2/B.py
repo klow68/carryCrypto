@@ -15,13 +15,13 @@ dictionnaire = {'A': 0,'B':1,'C':2,'D':3,'E':4,
 
 dic_bin = {dictionnaire[k]:k for k in dictionnaire.keys()}
 
-e = "" 
+e = ""
 d = ""
 n = ""
 
 def generation():
 	global e
-	global d  
+	global d
 	global n
 	cle = c.generation()
 	e= cle[0]
@@ -44,15 +44,23 @@ def __exponentiation_modulaire_rapide(g,d,n):
 	return R0
 
 def get_cle_publique():
-	return e
+	return e,n
 
 def envoie_message_to_B(msg,n):
-	cle_A = a.get_cle_publique()
-	msg_crypter = __exponentiation_modulaire_rapide(msg,cle_A,n)
+	#s a modifier
+	cle = a.get_cle_publique()
+	cle_A_e = cle[0]
+	cle_A_n = cle[1]
+	msg_crypter = __exponentiation_modulaire_rapide(msg,cle_A_e,cle_A_n)
 	return msg_crypter
 
+def decrypt_message_from_A(msg_crypt):
+	global d
+	global n
+	msg = __exponentiation_modulaire_rapide(msg_crypt, d, n)
+
 # excecute seulement si on lance B.py
-if __name__ == '__main__':	
+if __name__ == '__main__':
 	generation()
 	print "e : "+str(e)
 	print "d : "+str(d)
