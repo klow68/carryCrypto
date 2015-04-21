@@ -28,6 +28,11 @@ def generation():
 	d = cle[1]
 	n = cle[2]
 
+def toInt(lettre):
+	return dictionnaire[lettre]
+
+def toASCII(nombre):
+	return int(dic_bin[nombre])
 def __exponentiation_modulaire_rapide(g,d,n):
 	d = bin(d)
 	# supprime les caractère "0b"
@@ -44,13 +49,16 @@ def __exponentiation_modulaire_rapide(g,d,n):
 	return R0
 
 def get_cle_publique():
-	return e
+	return e,n
 
-def envoie_message_to_B(msg,n):
+def envoie_message_to_B(msg):
 	cle_B = b.get_cle_publique()
-	msg_crypter = __exponentiation_modulaire_rapide(msg,cle_B,n)
+	print cle_B
+	msg_crypter = []
+	for caract in msg:
+		print caract
+		msg_crypter.append(__exponentiation_modulaire_rapide(toInt(caract),cle_B[0],cle_B[1]))
 	return msg_crypter
-
 
 # excecute seulement si on lance B.py
 if __name__ == '__main__':	
@@ -58,3 +66,4 @@ if __name__ == '__main__':
 	print "e : "+str(e)
 	print "d : "+str(d)
 	print "n : "+str(n)
+	print envoie_message_to_B(['A','B'])
