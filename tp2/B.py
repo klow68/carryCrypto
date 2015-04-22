@@ -7,7 +7,7 @@ import math
 import C as c
 import A as a
 
-dictionnaire = {'A': 32,'B':33,'C':2,'D':3,'E':4,
+dictionnaire = {'A': 0,'B':1,'C':2,'D':3,'E':4,
 'F':5,'G':6,'H':7,'I':8,'J':9,
 'K':10,'L':11,'M':12,'N':13,'O':14,
 'P':15,'Q':16,'R':17,'S':18,'T':19,
@@ -54,11 +54,10 @@ def get_cle_publique():
 
 def envoie_message_to_A(msg):
 	cle_A = a.get_cle_publique()
-	print cle_A
 	msg_crypter = []
 	for caract in msg:
-		print caract
 		msg_crypter.append(__exponentiation_modulaire_rapide(toInt(caract),int(cle_A[0]),int(cle_A[1])))
+	print msg_crypter
 	return msg_crypter
 
 def decrypt_message_from_A(msg_crypt):
@@ -69,6 +68,7 @@ def decrypt_message_from_A(msg_crypt):
 		msg += toLetter(__exponentiation_modulaire_rapide(caract, d, n))
 
 	return msg
+
 # excecute seulement si on lance B.py
 if __name__ == '__main__':
 	a.generation()
@@ -76,4 +76,4 @@ if __name__ == '__main__':
 	print "e : "+str(e)
 	print "d : "+str(d)
 	print "n : "+str(n)
-	print a.decrypt_message_from_B(envoie_message_to_A(['A','B']))
+	print a.decrypt_message_from_B(envoie_message_to_A(['A','C']))

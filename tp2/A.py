@@ -7,7 +7,7 @@ import math
 import C as c
 import B as b
 
-dictionnaire = {'A': 32,'B':33,'C':2,'D':3,'E':4,
+dictionnaire = {'A': 0,'B':1,'C':2,'D':3,'E':4,
 'F':5,'G':6,'H':7,'I':8,'J':9,
 'K':10,'L':11,'M':12,'N':13,'O':14,
 'P':15,'Q':16,'R':17,'S':18,'T':19,
@@ -36,7 +36,7 @@ def toLetter(num):
 
 def toASCII(nombre):
 	return int(dic_bin[nombre])
-	
+
 def __exponentiation_modulaire_rapide(g,d,n):
 	d = bin(d)
 	# supprime les caractère "0b"
@@ -57,7 +57,6 @@ def get_cle_publique():
 
 def envoie_message_to_B(msg):
 	cle_B = b.get_cle_publique()
-	print cle_B
 	msg_crypter = []
 	for caract in msg:
 		msg_crypter.append(__exponentiation_modulaire_rapide(toInt(caract),int(cle_B[0]),int(cle_B[1])))
@@ -68,6 +67,10 @@ def decrypt_message_from_B(msg_crypt):
 	global n
 	msg = ''
 	for caract in msg_crypt:
+		print msg_crypt
+		print d
+		print n
+		print __exponentiation_modulaire_rapide(caract, d, n)
 		msg += toLetter(__exponentiation_modulaire_rapide(caract, d, n))
 	return msg
 
@@ -75,7 +78,11 @@ def decrypt_message_from_B(msg_crypt):
 if __name__ == '__main__':
 	b.generation()
 	generation()
+	print "caractéristique de A : "
 	print "e : "+str(e)
 	print "d : "+str(d)
 	print "n : "+str(n)
-	print b.decrypt_message_from_A(envoie_message_to_B(['A','B']))
+	msg = envoie_message_to_B(['C'])
+	print "msg : "+str(msg)
+	print b.decrypt_message_from_A(msg)
+	print "---------------------"
