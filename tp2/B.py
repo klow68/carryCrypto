@@ -59,7 +59,6 @@ def envoie_message_to_A(msg):
 	msg_crypter = []
 	for caract in msg:
 		msg_crypter.append(__exponentiation_modulaire_rapide(toInt(caract),int(cle_A[0]),int(cle_A[1])))
-
 	print "\n  $$ Envoie du message crypter à A : "+str(msg_crypter)
 	return msg_crypter
 
@@ -84,7 +83,8 @@ def etape_2(msg):
 		msg_crypt = envoie_message_to_A(msg_ok)
 		a.etape_2(msg_crypt)
 
-
+def main():
+	a.etape_1()
 # excecute seulement si on lance B.py
 if __name__ == '__main__':
 	#a.generation()

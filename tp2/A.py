@@ -109,4 +109,6 @@ def main():
 
 # excecute seulement si on lance A.py
 if __name__ == '__main__':
-	etape_1()
+	# petit tour part B pour régler le problème d'import circulaire de python
+	# b.main appelle a.etape_1()
+	b.main()
