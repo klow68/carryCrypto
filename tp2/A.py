@@ -56,10 +56,14 @@ def get_cle_publique():
 	return e,n
 
 def envoie_message_to_B(msg):
+	print "\n  ## Message a encrypter : "+msg
+	# Demande a B ça clé public
 	cle_B = b.get_cle_publique()
 	msg_crypter = []
 	for caract in msg:
 		msg_crypter.append(__exponentiation_modulaire_rapide(toInt(caract),int(cle_B[0]),int(cle_B[1])))
+
+	print "\n  ## Envoie du message crypter à B : "+str(msg_crypter)
 	return msg_crypter
 
 def decrypt_message_from_B(msg_crypt):
@@ -67,22 +71,42 @@ def decrypt_message_from_B(msg_crypt):
 	global n
 	msg = ''
 	for caract in msg_crypt:
-		print msg_crypt
-		print d
-		print n
-		print __exponentiation_modulaire_rapide(caract, d, n)
 		msg += toLetter(__exponentiation_modulaire_rapide(caract, d, n))
+
+	print "\n  ## Message décrypter par A : "+msg
 	return msg
 
-# excecute seulement si on lance B.py
-if __name__ == '__main__':
+def etape_1():
 	b.generation()
 	generation()
-	print "caractéristique de A : "
-	print "e : "+str(e)
-	print "d : "+str(d)
-	print "n : "+str(n)
-	msg = envoie_message_to_B(['C'])
-	print "msg : "+str(msg)
-	print b.decrypt_message_from_A(msg)
-	print "---------------------"
+	msg = "AB ?!"
+
+	print "\n  # A"
+	print "  $ B"
+	#print "\n  Clés de A : "
+	#print "  # e : "+str(e)
+	#print "  # d : "+str(d)
+	#print "  # n : "+str(n)
+
+	print "\n  ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤ 1 ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤"
+
+	msg_crypt = envoie_message_to_B(msg)
+
+	b.etape_1(msg_crypt)
+
+def etape_2(msg_crypt):
+	msg_decrypt = decrypt_message_from_B(msg_crypt)
+	etape_3(msg_decrypt)
+
+def etape_3(msg_decrypt):
+	print "\n  ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤ 3 ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤"
+	if msg_decrypt == "AB OK":
+		print ""
+
+def main():
+	msg_crypt = etape_1()
+
+
+# excecute seulement si on lance A.py
+if __name__ == '__main__':
+	etape_1()

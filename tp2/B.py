@@ -53,11 +53,14 @@ def get_cle_publique():
 	return e,n
 
 def envoie_message_to_A(msg):
+	print "\n  $$ Message a encrypter : "+msg
+	# Demande a A ça clé public
 	cle_A = a.get_cle_publique()
 	msg_crypter = []
 	for caract in msg:
 		msg_crypter.append(__exponentiation_modulaire_rapide(toInt(caract),int(cle_A[0]),int(cle_A[1])))
-	print msg_crypter
+
+	print "\n  $$ Envoie du message crypter à A : "+str(msg_crypter)
 	return msg_crypter
 
 def decrypt_message_from_A(msg_crypt):
@@ -67,13 +70,32 @@ def decrypt_message_from_A(msg_crypt):
 	for caract in msg_crypt:
 		msg += toLetter(__exponentiation_modulaire_rapide(caract, d, n))
 
+	print "\n  $$ Message décrypter par B : "+msg
 	return msg
+
+def etape_1(msg_crypt):
+	msg_decrypt = decrypt_message_from_A(msg_crypt)
+	etape_2(msg_decrypt)
+
+def etape_2(msg):
+	print "\n  ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤ 2 ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤"
+	if msg == "AB ?!":
+		msg_ok = "AB OK"
+		msg_crypt = envoie_message_to_A(msg_ok)
+		a.etape_2(msg_crypt)
+
 
 # excecute seulement si on lance B.py
 if __name__ == '__main__':
-	a.generation()
-	generation()
-	print "e : "+str(e)
-	print "d : "+str(d)
-	print "n : "+str(n)
-	print a.decrypt_message_from_B(envoie_message_to_A(['A','C']))
+	#a.generation()
+	#generation()
+	#print "\n Clés de B : "
+	#print "  # e : "+str(e)
+	#print "  # d : "+str(d)
+	#print "  # n : "+str(n)
+	#a.decrypt_message_from_B(envoie_message_to_A(['A','C']))
+	print "$$$ A commence la communication $$$"
+	a.main()
+
+	# pourquoi tant de haine ?
+	#etape_1(a.etape_1())

@@ -93,8 +93,8 @@ def __inverse_modulaire(a,b):
 
 	while u <= 0:
 		u = b + u
-	print a,b
-	print r,u,v
+	#print a,b
+	#print r,u,v
 	return u
 
 
@@ -129,15 +129,15 @@ def generation():
 	#e premier avec phi
 	e = __e_aleatoire(phi)
 
-	print __pgcd(e,phi)
+	#print __pgcd(e,phi)
 
 	d = __inverse_modulaire(e, phi)
 	#d = 2753
-	print d
+	#print d
 	x = d*e
-	print (d*phi)%n==1
+	#print (d*phi)%n==1
 	#test d correct
-	print __exponentiation_modulaire_rapide(x,1,n)==1
+	#print __exponentiation_modulaire_rapide(x,1,n)==1
 
 	return e,d,n
 
