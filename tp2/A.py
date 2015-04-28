@@ -7,7 +7,7 @@ import math
 import C as c
 import B as b
 
-dictionnaire = {'A': 0,'B':1,'C':2,'D':3,'E':4,
+dictionnaire = {'A': 32,'B':33,'C':2,'D':3,'E':4,
 'F':5,'G':6,'H':7,'I':8,'J':9,
 'K':10,'L':11,'M':12,'N':13,'O':14,
 'P':15,'Q':16,'R':17,'S':18,'T':19,
@@ -18,6 +18,7 @@ dic_bin = {dictionnaire[k]:k for k in dictionnaire.keys()}
 e = ""
 d = ""
 n = ""
+rand = ""
 
 def generation():
 	global e
@@ -99,9 +100,27 @@ def etape_2(msg_crypt):
 	etape_3(msg_decrypt)
 
 def etape_3(msg_decrypt):
+	global rand
+
 	print "\n  ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤ 3 ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤"
 	if msg_decrypt == "AB OK":
-		print ""
+		rand = ''
+		for _ in range(4):
+			rand += toLetter(random.randint(2,33))
+		print "\n  ## 4 caractères aléatoire : "+rand
+
+		msg_crypt = envoie_message_to_B(rand)
+		b.etape_3(msg_crypt)
+
+def etape_3_suite(msg_crypt):
+	msg_decrypt = decrypt_message_from_B(msg_crypt)
+	etape_4(msg_decrypt)
+
+def etape_4(msg_decrypt):
+	print "\n  ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤ 4 ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤"
+	if msg_decrypt == rand:
+		print "OK"
+
 
 def main():
 	msg_crypt = etape_1()

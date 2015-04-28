@@ -7,7 +7,7 @@ import math
 import C as c
 import A as a
 
-dictionnaire = {'A': 0,'B':1,'C':2,'D':3,'E':4,
+dictionnaire = {'A': 32,'B':33,'C':2,'D':3,'E':4,
 'F':5,'G':6,'H':7,'I':8,'J':9,
 'K':10,'L':11,'M':12,'N':13,'O':14,
 'P':15,'Q':16,'R':17,'S':18,'T':19,
@@ -18,6 +18,7 @@ dic_bin = {dictionnaire[k]:k for k in dictionnaire.keys()}
 e = ""
 d = ""
 n = ""
+rand=""
 
 def generation():
 	global e
@@ -83,8 +84,16 @@ def etape_2(msg):
 		msg_crypt = envoie_message_to_A(msg_ok)
 		a.etape_2(msg_crypt)
 
+def etape_3(msg_crypt):
+	global rand
+	rand = decrypt_message_from_A(msg_crypt)
+	msg_crypt = envoie_message_to_A(rand)
+	a.etape_3_suite(msg_crypt)
+
+# petit tour pour régler le problème d'import circulaire de python
 def main():
 	a.etape_1()
+
 # excecute seulement si on lance B.py
 if __name__ == '__main__':
 	#a.generation()
