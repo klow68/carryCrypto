@@ -19,6 +19,7 @@ e = ""
 d = ""
 n = ""
 rand = ""
+mdp = ""
 
 def generation():
 	global e
@@ -119,7 +120,14 @@ def etape_3_suite(msg_crypt):
 def etape_4(msg_decrypt):
 	print "\n  ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤ 4 ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤"
 	if msg_decrypt == rand:
-		print "OK"
+		msg = "AB OK"
+		msg_droite = msg[-len(rand):]
+		print msg_droite
+		msg_droite_bin = c.encrypt_mot_binaire(msg_droite)
+
+			
+		
+
 
 
 def main():

@@ -89,6 +89,15 @@ def etape_3(msg_crypt):
 	rand = decrypt_message_from_A(msg_crypt)
 	msg_crypt = envoie_message_to_A(rand)
 	a.etape_3_suite(msg_crypt)
+def etape4(msg_decrypt):
+	if msg_decrypt == rand:
+		msg = "AB OK"
+		msg_bin = encrypt_mot_binaire(msg[-len(rand):])
+		msg_reste_bin = encrypt_mot_binaire(msg[:len(msg)-len(rand)])
+		msg_bin = ouExclusif(msg_bin,encrypt_mot_binaire(rand))
+		global mdp 
+		mdp = msg_bin
+		mdp += msg_bin
 
 # petit tour pour régler le problème d'import circulaire de python
 def main():
