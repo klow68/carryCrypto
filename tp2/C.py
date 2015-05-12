@@ -5,7 +5,7 @@ import random
 import sys
 import math
 NB_BIT = 5
-dictionnaire = {'A': 32,'B':33,'C':2,'D':3,'E':4,
+dictionnaire = {'A': 0,'B':1,'C':2,'D':3,'E':4,
 'F':5,'G':6,'H':7,'I':8,'J':9,
 'K':10,'L':11,'M':12,'N':13,'O':14,
 'P':15,'Q':16,'R':17,'S':18,'T':19,
@@ -189,7 +189,7 @@ def decrypt_mot_binaire(mot_bin):
 
 def function(msg,Key):
 	#Decalage binaire
-	msg_bin = encrypt_binaire(msg[0]) + encrypt_binaire(msg[1])
+	msg_bin = encrypt_mot_binaire(msg)
 	#print msg_bin
 	msg_fin=''
 	for i in range(1,len(msg_bin)):
@@ -235,7 +235,60 @@ def encrypt_feistel(bloc,Key):
 		print Key_feistel
 
 	return G+D
+def encrypt_feistel_2(bloc,key):
+	key_blocs = []
+	for i in range(0,len(key)):
+		if(i<len(key)-1):
+			if(i<len(key)-2):
+				key_blocs.append(str(key[i])+str(key[i+1])+str(key[i+2]))
+			else:
+				key_blocs.append(str(key[i])+str(key[i+1])+str(key[0]))
+		else:
+			key_blocs.append(str(key[i])+str(key[0])+str(key[1]))
+				
+	while len(bloc) % (len(key_blocs[0])) > 0:
+		tmp  = "A"
+		tmp += bloc
+		bloc = tmp
 
+	print bloc
+	G = bloc[:len(key_blocs[0])]
+	D = bloc[len(key_blocs[0]):]
+	for i in range(len(key_blocs)):
+		print key_blocs[i]
+		D2 = D
+		D = function(D,encrypt_mot_binaire(key_blocs[i]))
+		D = decrypt_mot_binaire(ouExclusif(D,encrypt_mot_binaire(G)))
+		G = D2
+	return D+G
+
+def decrypt_feistel_2(bloc,key):
+	key_blocs = []
+	for i in range(0,len(key)):
+		if(i<len(key)-1):
+			if(i<len(key)-2):
+				key_blocs.append(str(key[i])+str(key[i+1])+str(key[i+2]))
+			else:
+				key_blocs.append(str(key[i])+str(key[i+1])+str(key[0]))
+		else:
+			key_blocs.append(str(key[i])+str(key[0])+str(key[1]))
+				
+	while len(bloc) % (len(key_blocs[0])) > 0:
+		tmp  = "A"
+		tmp += bloc
+		bloc = tmp
+
+	G = bloc[:len(key_blocs[0])]
+	D = bloc[len(key_blocs[0]):]
+	for i in range(len(key_blocs)-1,-1,-1):
+		D2 = D
+		D = function(D,encrypt_mot_binaire(key_blocs[i]))
+		D = decrypt_mot_binaire(ouExclusif(D,encrypt_mot_binaire(G)))
+		G = D2
+	while (D[0]=='A'):
+		tmp = D[len(D)-1:]
+		D = tmp
+	return D+G
 def decrypt_feistel(bloc,Key):
 	D = bloc[:2]
 	G = bloc[2:]

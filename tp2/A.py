@@ -7,7 +7,7 @@ import math
 import C as c
 import B as b
 
-dictionnaire = {'A': 32,'B':33,'C':2,'D':3,'E':4,
+dictionnaire = {'A': 0,'B':1,'C':2,'D':3,'E':4,
 'F':5,'G':6,'H':7,'I':8,'J':9,
 'K':10,'L':11,'M':12,'N':13,'O':14,
 'P':15,'Q':16,'R':17,'S':18,'T':19,
@@ -107,7 +107,7 @@ def etape_3(msg_decrypt):
 	if msg_decrypt == "AB OK":
 		rand = ''
 		for _ in range(4):
-			rand += toLetter(random.randint(2,33))
+			rand += toLetter(random.randint(0,31))
 		print "\n  ## 4 caractères aléatoire : "+rand
 
 		msg_crypt = envoie_message_to_B(rand)
@@ -122,12 +122,20 @@ def etape_4(msg_decrypt):
 	if msg_decrypt == rand:
 		msg = "AB OK"
 		msg_droite = msg[-len(rand):]
-		print msg_droite
 		msg_droite_bin = c.encrypt_mot_binaire(msg_droite)
+		global mdp
+		mdp += c.encrypt_binaire(msg[:len(msg)-len(rand)])
+		mdp += c.ouExclusif(msg_droite_bin,c.encrypt_mot_binaire(rand))
+		mdp = c.decrypt_mot_binaire(mdp)
+		print "\n## Mot de passe " +mdp
+		b.etape4(msg_decrypt)
 
-			
-		
-
+def etape_5():
+	msg_chiffre = c.encrypt_feistel_2(rand,mdp)
+	print "\n  ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤ 5 ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤"
+	print "\n##Message clair : "+rand
+	print "\n## Envoi du message chiffré :"+msg_chiffre
+	b.etape_6(msg_chiffre)
 
 
 def main():

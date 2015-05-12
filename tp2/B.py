@@ -7,7 +7,7 @@ import math
 import C as c
 import A as a
 
-dictionnaire = {'A': 32,'B':33,'C':2,'D':3,'E':4,
+dictionnaire = {'A': 0,'B':1,'C':2,'D':3,'E':4,
 'F':5,'G':6,'H':7,'I':8,'J':9,
 'K':10,'L':11,'M':12,'N':13,'O':14,
 'P':15,'Q':16,'R':17,'S':18,'T':19,
@@ -19,6 +19,7 @@ e = ""
 d = ""
 n = ""
 rand=""
+mdp=""
 
 def generation():
 	global e
@@ -92,12 +93,21 @@ def etape_3(msg_crypt):
 def etape4(msg_decrypt):
 	if msg_decrypt == rand:
 		msg = "AB OK"
-		msg_bin = encrypt_mot_binaire(msg[-len(rand):])
-		msg_reste_bin = encrypt_mot_binaire(msg[:len(msg)-len(rand)])
-		msg_bin = ouExclusif(msg_bin,encrypt_mot_binaire(rand))
-		global mdp 
-		mdp = msg_bin
-		mdp += msg_bin
+		msg_droite = msg[-len(rand):]
+		msg_droite_bin = c.encrypt_mot_binaire(msg_droite)
+		global mdp
+		mdp += c.encrypt_binaire(msg[:len(msg)-len(rand)])
+		mdp += c.ouExclusif(msg_droite_bin,c.encrypt_mot_binaire(rand))
+		mdp = c.decrypt_mot_binaire(mdp)
+		print "\n$$ Mot de passe " +mdp
+		a.etape_5()
+
+def etape_6(msg_chiffre):
+	print "\n  ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤ 6 ¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤"
+	print "\n$$Dechiffrage de " + msg_chiffre
+
+	code = c.decrypt_feistel_2(msg_chiffre,mdp)
+	print "\n$$ Message lu : " + code
 
 # petit tour pour régler le problème d'import circulaire de python
 def main():
