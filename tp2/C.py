@@ -60,9 +60,9 @@ def __lucas_lehmer(n,k = 7):
 
 def __exponentiation_modulaire_rapide(g,d,n):
 	d = bin(d)
-	# supprime les caractère "0b"
+	# supprime les caractères "0b"
 	d = d[2:]
-	# reverse la chaine
+	# renverse la chaine
 	d = d[::-1]
 
 	R0 = 1
@@ -323,7 +323,7 @@ def tailleTexteMod4(mot):
 
 def verif_texte(mot):
 	resultat = 0
-	# liste des caractères interdit
+	# liste des caractères interdits
 	if re.search("['\"²&é~#{}()\[\]\-|è`_\ç^à@°=+0-9]",mot):
 		resultat = 1
 		print "\n# Texte non valide : "+mot+"\n"

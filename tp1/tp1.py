@@ -17,7 +17,6 @@ dictionnaire = {'A': 0,'B':1,'C':2,'D':3,'E':4,
 dic_bin = {dictionnaire[k]:k for k in dictionnaire.keys()}
 
 def toilettage_binaire(binaire):
-	#jean_nono
 	taille = len(binaire) - 2
 	cypherText=''
 	if(taille < NB_BIT):
@@ -186,7 +185,7 @@ def encrypt_CBC(mot,Key,VI):
 	VI = encrypt_mot_binaire(VI)
 	
 	for i in range (0,len(mot),4):
-		#passage des 4 premier caractère en binaire
+		#passage des 4 premiers caractères en binaire
 		plain_bin = encrypt_mot_binaire(mot[:4])
 		#plain text XOR Vecteur d'initialisation
 		cypher_text = ouExclusif(plain_bin[:20],VI)
@@ -199,7 +198,7 @@ def encrypt_CBC(mot,Key,VI):
 		
 		VI = encrypt_mot_binaire(cypher_text)
 
-		#supression des 4 premier caractère déjà crypter
+		#supression des 4 premier caractères déjà chiffrés
 		mot = mot[4:]
 
 	return res

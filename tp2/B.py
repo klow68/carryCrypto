@@ -55,13 +55,13 @@ def get_cle_publique():
 	return e,n
 
 def envoie_message_to_A(msg):
-	print "\n  $$ Message a encrypter : "+msg
+	print "\n  $$ Message à chiffrer : "+msg
 	# Demande a A ça clé public
 	cle_A = a.get_cle_publique()
 	msg_crypter = []
 	for caract in msg:
 		msg_crypter.append(__exponentiation_modulaire_rapide(toInt(caract),int(cle_A[0]),int(cle_A[1])))
-	print "\n  $$ Envoie du message crypter à A : "+str(msg_crypter)
+	print "\n  $$ Envoie du message chiffré à A : "+str(msg_crypter)
 	return msg_crypter
 
 def decrypt_message_from_A(msg_crypt):
@@ -71,7 +71,7 @@ def decrypt_message_from_A(msg_crypt):
 	for caract in msg_crypt:
 		msg += toLetter(__exponentiation_modulaire_rapide(caract, d, n))
 
-	print "\n  $$ Message décrypter par B : "+msg
+	print "\n  $$ Message déchiffré par B : "+msg
 	return msg
 
 def etape_1(msg_crypt):
@@ -125,5 +125,3 @@ if __name__ == '__main__':
 	print "$$$ A commence la communication $$$"
 	a.main()
 
-	# pourquoi tant de haine ?
-	#etape_1(a.etape_1())
