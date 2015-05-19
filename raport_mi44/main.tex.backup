@@ -1,0 +1,291 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The Legrand Orange Book
+% LaTeX Template
+% Version 2.0 (9/2/15)
+%
+% This template has been downloaded from:
+% http://www.LaTeXTemplates.com
+%
+% Mathias Legrand (legrand.mathias@gmail.com) with modifications by:
+% Vel (vel@latextemplates.com)
+%
+% License:
+% CC BY-NC-SA 3.0 (http://creativecommons.org/licenses/by-nc-sa/3.0/)
+%
+% Compiling this template:
+% This template uses biber for its bibliography and makeindex for its index.
+% When you first open the template, compile it from the command line with the 
+% commands below to make sure your LaTeX distribution is configured correctly:
+%
+% 1) pdflatex main
+% 2) makeindex main.idx -s StyleInd.ist
+% 3) biber main
+% 4) pdflatex main x 2
+%
+% After this, when you wish to update the bibliography/index use the appropriate
+% command above and make sure to compile with pdflatex several times 
+% afterwards to propagate your changes to the document.
+%
+% This template also uses a number of packages which may need to be
+% updated to the newest versions for the template to compile. It is strongly
+% recommended you update your LaTeX distribution if you have any
+% compilation errors.
+%
+% Important note:
+% Chapter heading images should have a 2:1 width:height ratio,
+% e.g. 920px width and 460px height.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass[11pt,fleqn]{book} % Default font size and left-justified equations
+
+%----------------------------------------------------------------------------------------
+
+\input{structure} % Insert the commands.tex file which contains the majority of the structure behind the template
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	TITLE PAGE
+%----------------------------------------------------------------------------------------
+
+\begingroup
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture,overlay]
+\coordinate [below=12cm] (midpoint) at (current page.north);
+\node at (current page.north west)
+{\begin{tikzpicture}[remember picture,overlay]
+\node[anchor=north west,inner sep=0pt] at (0,0) {\includegraphics[width=\paperwidth]{crypto}}; % Background image
+\draw[anchor=north] (midpoint) node [fill=ocre!30!white,fill opacity=0.6,text opacity=1,inner sep=1cm]{\Huge\centering\bfseries\sffamily\parbox[c][][t]{\paperwidth}{\centering Projet MI44\\[15pt] % Book title
+{\huge DAUDAN Florian / GUIMARAES Patrick}}}; % Author name
+\end{tikzpicture}};
+\end{tikzpicture}
+\vfill
+\endgroup
+
+%----------------------------------------------------------------------------------------
+%	TABLE OF CONTENTS
+%----------------------------------------------------------------------------------------
+
+\renewcommand*\contentsname{Sommaire}
+
+\chapterimage{crypto_chapter} % Table of contents heading image
+
+\pagestyle{empty} % No headers
+
+\tableofcontents % Print the table of contents itself
+
+%\cleardoublepage % Forces the first chapter to start on an odd page so it's on the right
+
+%\pagestyle{fancy} % Print headers again
+
+%----------------------------------------------------------------------------------------
+%	PART
+%----------------------------------------------------------------------------------------
+
+%\part{Part One}
+
+%----------------------------------------------------------------------------------------
+%	CHAPTER 1
+%----------------------------------------------------------------------------------------
+\cleardoublepage
+\chapterimage{crypto_chapter} % Chapter heading image
+
+\chapter{TP1 : Cryptographie par bloc}
+
+%\section{Paragraphs of Text}\index{Paragraphs of Text}
+
+%\lipsum[1-7] % Dummy text
+%------------------------------------------------
+
+\section{Introduction}
+
+\paragraph{}Afin de gérer la conversion d'un caractère en un nombre binaire, nous avons mis au point un dictionnaire. En effet, chaque caractère (A,B,C…) correspond à un nombre (A=0, B=1,C=2,…) et le dictionnaire va donc permettre d'attribuer plus rapidement un nombre à un caractère. Et dans le cadre inverse, un second dictionnaire va permettre de passer d'un nombre au caractère correspondant.
+\vspace{0.5cm} Nous avons 32 caractères à gérer ; toutes les lettres de l'alphabet latin ainsi que les caractères espace, point, virgule, apostrophe, point d'exclamation et point d'interrogation. Ce qui nous fait un total de 32 caractère codable sur 5 bits en binaire. Notons la constante NB\_BIT permettant d'ajuster le codage des caractères. En outre, elle permet d’égaliser l'écriture de tous les nombres binaires qui auront, de surcroît, le même nombre de bit. Par exemple, B (=1) sera écrit 00001.
+%------------------------------------------------
+
+\section{Binaire}\index{Binaire}
+
+\subsection{Encrypt}\index{Crypter}
+%Texte encrypt \cite{image_crypt}.
+\paragraph{}La fonction \textbf{encrypt\_binaire(lettre)} reçoit en paramètre un caractère et retourne directement le nombre binaire associé. En prime abord, elle demande au dictionnaire de lui retourner la valeur numérique en base 10 du caractère . Puis ensuite elle convertit cette valeur en binaire qui sera elle-même envoyée à la fonction \textbf{toilettage\_binaire(binaire)} qui, comme son nom l'indique, va se charger d'écrire le binaire sous le bon nombre de bit(cf. constante NB\_BIT).
+Une fois ces opérations terminées, le caractère en binaire sera renvoyé.
+\vspace{0.5cm}Dans la même optique, nous avons conçu la fonction \textbf{encrypt\_mot\_binaire(mot)}  qui va recevoir un mot, ou une phrase, et renvoyer directement le mot/phrase converti(e). 
+
+\begin{figure}[h]
+\centering\includegraphics[scale=0.5]{encrypt_binaire}
+\caption{Fonctions de conversion en binaire}
+\end{figure}
+
+%------------------------------------------------
+
+\subsection{Decrypt}\index{Decrypter}
+
+\paragraph{}Finalement, pour réaliser l'opération inverse, c'est à dire de convertir un binaire en caractère, nous avons écrit la fonction \textbf{decrypt\_binaire()} qui reçoit un nombre binaire. Cette méthode va en premier lieu convertir le nombre en décimal. Puis appeler le second dictionnaire pour lui demander quel caractère est associé au nombre. Enfin, elle va retourner le caractère trouvé. De façon similaire à encryp\_mot\_binaire(), nous avons écrit \textbf{decrypt\_mot\_binaire(}) qui à partir d'une phrase ou un mot binaire de taille \% NB\_BIT, va retourner les caractères correspondant.
+
+\begin{figure}[h]
+\centering\includegraphics[scale=0.5]{decrypt_binaire}
+\caption{Fonctions de conversion en caractère}
+\end{figure}
+
+%------------------------------------------------
+
+\subsection{Ou Exclusif}\index{Ou Exclusif}
+
+\paragraph{}La fonction \textbf{ouExclusif(A,B)} réalise le ou exclusif en binaire, elle prend en compte deux binaires.
+\vspace{0.5cm}On parcourt le premier binaire bit à bit, on compare le bit avec le bit de l'autre binaire. S'ils sont égals et que l'un d'eux est égal à 1, on retourne 0. Sinon si l'un deux est égal à 1 on retourne 1. Dans les autres cas on retourne 0. Une fois terminé, nous avons le résultat de l'addition binaire.
+
+\begin{figure}[h]
+\centering\includegraphics[scale=0.5]{ouExclusif}
+\caption{ou exclusif(XOR)}
+\end{figure}
+
+%------------------------------------------------
+
+\section{Function}\index{Function}
+
+\paragraph{}La fonction \textbf{function()} prend en paramètre un message msg de 2 caractères ainsi qu'une clé Key de 2 caractères convertie en binaire. On converti le message en binaire puis on réalise le décalage binaire. Ce dernier se réalise de cette manière : on crée une nouvelle variable, on lui ajoute tous les bits du message binaire en commençant par le second bit. Une fois arrivé à la fin, on lui ajoute le premier bit du message réalisant ainsi le décalage binaire gauche.
+
+\begin{figure}[h]
+\centering\includegraphics[scale=0.5]{function}
+\caption{Fonction de Feistel}
+\end{figure}
+
+%------------------------------------------------
+
+\section{Réseau de Feistel}\index{Feistel}
+
+\subsection{Encrypt}
+
+\paragraph{}Le réseau de Feistel est symbolisé par la fonction \textbf{encrypt\_feistel()} qui à partir d'un bloc et d'une clé, va chiffrer un texte. Tout d'abord, nous divisons le bloc en deux, le bloc gauche et le bloc droit. Pour chaque caractère de la clé (i.e. 4 boucles), nous effectuons les opérations suivantes. On réalise la copie du bloc droit, on prend les deux premier caractères de la clé et on les stocke, on décale la clé de 1 caractère, on transforme le bloc droit à travers la fonction function() à laquelle on lui envoie le bloc droit lui-même ainsi que la clé convertie en binaire. Une fois cela réalisé, on effectue le ou exclusif avec le nouveau bloc droit (résultat de la fonction function()) et la partie gauche. Le résultat obtenu est ainsi converti en caractère, on stocke la copie du bloc droit dans le bloc gauche, et on réitère ce traitement. Nous obtenons finalement notre bloc chiffré à partir de la clé.
+
+\begin{figure}[h]
+\centering\includegraphics[scale=0.5]{feistel}
+\caption{Réseau de Feistel pour chiffrer}
+\end{figure}
+
+%------------------------------------------------
+
+\subsection{Decrypt}
+
+\paragraph{}Dans l'optique inverse, nous avons conçu \textbf{decrypt\_Feistel()}, qui à partir d'un bloc chiffré et d'une clé va déchiffrer le message. L'opération est similaire à encrypt\_Feistel(), nous divisons notre bloc de 4 caractères en deux blocs : gauche et droite. À la différence de encrypt\_Feistel(), nous parcourons la clé à l'envers (i.e. « XK » → « CX » → « XC » → « KX ») mais nous effectuons les mêmes opérations : le bloc droit passe par function(), puis le résultat obtenu subi un ou exclusif avec le bloc gauche, et finalement on inverse le bloc gauche avec le bloc droit.
+
+\begin{figure}[h]
+\centering\includegraphics[scale=0.5]{dechiffrement_feistel}
+\caption{Déchiffrement par Feistel}
+\end{figure}
+
+%------------------------------------------------
+
+\subsection{Exemple}
+
+\paragraph{}Afin d'illustrer un exemple concret de fonctionnement du réseau de Feistel, nous avons procéder à une fonction main() permettant de simuler l'échange d'un texte chiffré.
+\vspace{0.5cm}Nous choisissons un mot arbitraire « AAAA??BB » et une clé « KXCX ». Nous nous assurons que les lettres soient en lettres majuscules (mot.upper()). Nous « préparons » le texte de sorte que sa taille soit un multiple de 4 par le fonction tailleTexteMod4() qui va ajouter des espaces à la fin du mot. Par la suite, nous chiffrons bloc par bloc le texte (taille de 4 caractères). Nous obtenons ainsi « MYMWEQG, ». Et en effectuant l'opération inverse par la fonction decrypt\_feistel() nous ré-obtenons « AAAA??BB ».
+
+\begin{figure}[h]
+\centering\includegraphics[scale=0.5]{exemple}
+\caption{Exemple de chiffrement}
+\end{figure}
+
+%------------------------------------------------
+
+\section{Cipher-bloc Chaining}
+
+\paragraph{}Maintenant intéressons nous au chiffrement et déchiffrement en mode CBC. Tout d'abord, nous avons la fonction vecteur\_initialisation() qui va prendre au hasard 4 caractères dans le dictionnaire pour former la clé. //TODO j'ai pas compris.
+
+\begin{figure}[h]
+\centering\includegraphics[scale=0.5]{CBC}
+\caption{CBC}
+\end{figure}
+
+%----------------------------------------------------------------------------------------
+%	CHAPTER 2
+%----------------------------------------------------------------------------------------
+
+\chapter{TP2 : Cryptographie RSA}
+
+%------------------------------------------------
+
+\section{Introduction}
+
+\paragraph{}Nous avons simulé un échange de message avec le protocole RSA entre deux identités à l'aide de 3 programmes. Les programmes A et B simule Alice et Bob, deux personnes souhaitant communiquer de manière secrète, et finalement le programme C représentant l'autorité décernant les clés aux différentes personnes. Nous allons nous intéresser dans un premier temps au programme C qui génère les différentes clés, puis nous étudierons le fonctionnement de l'échange de messages.
+
+%------------------------------------------------
+
+\section{Le programme C}
+
+\paragraph{}La fonction centrale de ce programme est la fonction \textbf{generation()} permettant d'éditer l'ensemble des clés
+\\Tout d'abord, nous choisissons 2 nombres premiers aléatoires à l'aide de la fonction \textbf{get\_random()} qui va tirer au hasard un nombre puis va vérifier s'il est premier grâce à la méthode \textbf{lucas\_lehmer()}.
+Cette dernière fonctionne ainsi : elle reçoit en paramètre un nombre à tester ainsi qu'un nombre de test qui par défaut est 7. Ce nombre correspond aux nombres de boucles de test que nous réalisons pour tester la primalité du nombre. Tout d'abord si le nombre à tester, que nous appellerons n, est inférieur à 1 le test retourne faux. Ainsi que si n est égal à 2 le test retourne vrai. Nous arrivons dans la boucle principale où le traitement sera réitéré plusieurs fois. En premier lieu nous choisissons un nombre aléatoire entre 3 (car nous excluons 1 et 2) et n-2 . Nous réalisons l’exponentiation modulaire de a\^n-1 mod n. Si le résultat est différent de 1,  on retourne faux. Sinon nous établissons la liste des primitifs de n(cf plus bas la description de la fonction \textbf{primes()}). Nous parcourons cette liste et à chaque primitif nous réalisons a\^(n-1)/q mod n. Si le résultat est égal à 1, nous retournons faux. A la fin de la boucle, si le test n'a retourné aucune valeur, nous finissons par le retour de vrai, car nous avons trouvé que n est un nombre entier.
+\\\vspace{0.5cm}Fonction \textbf{primes()}. Cette fonction permet de trouver la liste des entiers primifs d'un nombre entier. Tout d'abord, nous allouons un tableau, et un indice de départ d égal à 2 (premier nombre premier). Nous entrons ensuite dans la boucle while principale où la condition est tant que d² ≤ n , avec n le nombre premier. Dans cette boucle, nous entrons dans une sous-boucle while  où la condition est (n \% d) == 0. Si la condition est respectée, on ajoute d à la liste. Puis on divise n par d, en gardant la partie entière. On sort de la sous-boucle while , on incrémente d et on recommence. Lors de la sortie de la boucle principale while, si n>1 on ajoute n à la liste des entier primitifs, dans tous les cas on retourne la liste.
+\vspace{0.5cm}Retournons à la génération des clés, nous avons grâce aux fonctions précédentes, 2 nombres entiers que nous nommerons p et q. Nous calculons n = p*q puis phi(n) = (p-1)*(q-1). Maintenant nous cherchons e, qui est un nombre premier aléatoire entre 1 et phi(n). Intéressons nous à la fonction e\_aleatoire(phi). Cette fonction tire un nombre premier aléatoire entre 2 et phi-1 uniquement si ce nombre ne possède aucun diviseur commun avec phi.
+\vspace{0.5cm}Maintenant que nous possédons la clé privée (i.e. e), nous pouvons éditer la clé publique	. Pour cela 
+nous devons chercher d, l'inverse modulaire de phi modulo n. Nous faisons appel à la fonction \textbf{inverse\_modulaire(e,phi)}. Cette fonction utilise l’algorithme suivant :
+\\TODO
+\\- les constantes u0 = 1, u1 = 0, v0=0 et v1 = 1
+\\- r0 = (e * u0) + (phi * v0)
+\\- r1 = (e * u1) + (phi * v1)
+\\- Tant que r1 est différent de 0 nous faisons
+\\	- q = r0 / r1
+\\	- r = r0
+\\	-u = u0
+\\	-v = v0
+\\	- on affecte à r0 la valeur de r1, ainsi que u0 reçoit u1 et v0 vaut v1.
+\\	- r1 = r – (q * r1)
+\\	- u1 = u – (q * u1)
+\\	- v1 = v – (q*v1)
+\\- Une fois terminé,  nous incrémentons b à u0 afin qu'il devienne positif
+\\- On retourne u, l'inverse modulaire de phi.
+\vspace{0.5cm}La fonction génération retourne le couple e,d,n qui comporte clé publique/privée pour le futur utilisateur.
+
+\begin{figure}[h]
+\centering\includegraphics[scale=0.5]{placeholder}
+\caption{Figure caption}
+\end{figure}
+
+%------------------------------------------------
+
+\section{Le programme A et B}
+\paragraph{}Maintenons nous allons étudier le fonctionnement des différents opérateurs dans l'échange de leur message. Nommons les A et B. 
+\subsection{Etape 1}
+\paragraph{}A souhaite envoyer le message suivant : « AB ?! » vers B. Pour cela il fait appel à la fonction \textbf{envoie\_message\_to\_B(message)} qui va encoder le message selon le protocole RSA. C'est à dire que nous allons convertir chaque caractère en nombre. Pour cela nous réutilisons le dictionnaire du TP précédent. Maintenant que nous avons un nombre, nous effectuons le calcul suivant : 
+\\soit M le nombre à chiffrer et (d,n) la clé publique de B
+\\C = M\^d mod n
+\vspace{0.5cm}Nota Bene : à des fins pratiques, nous utilisons la fonction d'exponentiation modulaire rapide pour limiter l'utilisation du processeur et pour une résultat plus rapide.
+\vspace{0.5cm}Une fois notre nombre chiffré, nous recommençons avec les autres caractères du message. Ce qui nous donne une liste de nombre. Nous envoyons cette liste à B qui va commencer le déchiffrement.
+\\Pour cela, B utilise \textbf{decrypt\_message\_from\_A(msg\_crypt)} . Cette fonction va prendre chaque nombre dans la liste reçue et le déchiffrer en utilisant la formule suivante : 
+\\soit C le message chiffré, (e,n) la clé privée de B
+\\M = C\^e mod n
+\subsection{Etape 2}
+\paragraph{}Une fois le message lu, B compare si le message reçu est égale à « AB?! ». Si tel est le cas, B prépare le message « AB OK » pour A. Il le chiffre de la même manière que cas en faisant C = M\^d mod n avec ( d,n) la clé publique de A.
+\vspace{0.5cm}A reçoit le message, le déchiffre et le compare à « Ab OK ». S'ils sont similaires, on passa à l'étape 3
+
+\subsection{Etape 3}
+\paragraph{}A génère 4 caractères aléatoires à partir de son dictionnaire. Puis il les envoie à Ben utilisant le protocole RSA.  B les déchiffre, puis les chiffre pour les renvoyer à A. A son tour, A déchiffre pour vérifier que le message a bien été reçu.
+
+\subsection{Etape 4}
+\paragraph{}Puisque A et B possède le même mot de passe, on va pouvoir effectuer les opérations suivantes. On effectue le ou exclusif de « AB OK » et du mot de passe. Puisque que le message possède une taille plus grande que le mot de passe ( 4 caractères contre 5), nous nous sommes adaptés à la fonction ouExclusif(). En effet nous effectuons un ou exclusif uniquement avec le caractères nécessaires en partant de la droite du message. Exemple :
+\vspace{0.5cm}AB OK → message
+\\ABCD → mot de passe
+\\Nous alignons à droite le mot de passe
+\vspace{0.5cm}AB OK
+\\ABCD
+\\puis nous découpons le messages
+\\B OK
+\\ABCD
+\\Maintenant nous effectuons un ou exclusif de B OK et ABCD.
+\\Puisque le XOR de A et 0 donne A, nous prenons A et ajoutons le résultat du XOR à la suite.
+
+\subsection{Etape 5}
+\paragraph{}Avec notre mot de passe ainsi généré ( la clé pour le réseau de Feitel), nous pouvons commencer le chiffrement. Nous avons adapté la fonction \textbf{encrypt\_feistel} en \textbf{encrypt\_feistel\_2}  , elle permet de réaliser le chiffrement avec des tailles différentes de 4 caractères. A chiffre son message puis l'envoie à B qui va le déchiffrer avec le même mot de passe(clé). 
+
+\begin{figure}[h]
+\centering\includegraphics[scale=0.5]{placeholder}
+\caption{Figure caption}
+\end{figure}
+
+\end{document}

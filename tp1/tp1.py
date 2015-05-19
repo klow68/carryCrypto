@@ -161,7 +161,7 @@ for i in range (0,len(mot),4):
 	cypher_text += encrypt_feistel(mot[:4],key);
 	mot = mot[4:]
 
-print "\n Encrypter : "+cypher_text
+print "\n Chiffré : "+cypher_text
 
 
 #Decryption
@@ -169,7 +169,7 @@ for i in range (0,len(cypher_text),4):
 	resultat += decrypt_feistel(cypher_text[:4],key)
 	cypher_text = cypher_text[4:]
 
-print "\n Decrypter : "+resultat+"\n"
+print "\n Déchiffré : "+resultat+"\n"
 
 
 #******************************** CBC *********************************
@@ -230,7 +230,7 @@ print "\n# CBC encryption #\n"
 crypt=''
 decrypt=''
 
-mot='Je suis un ponney'
+mot='Je suis une phrase'
 mot = mot.upper()
 mot=tailleTexteMod4(mot)
 if verif_texte(mot)==1:
