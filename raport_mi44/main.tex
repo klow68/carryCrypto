@@ -46,7 +46,6 @@
 %----------------------------------------------------------------------------------------
 
 \input{structure} % Insert the commands.tex file which contains the majority of the structure behind the template
-
 \begin{document}
 
 %----------------------------------------------------------------------------------------
@@ -116,20 +115,22 @@
 Une fois ces opérations terminées, le caractère en binaire sera renvoyé.
 \vspace{0.5cm}Dans la même optique, nous avons conçu la fonction \textbf{encrypt\_mot\_binaire(mot)}  qui va recevoir un mot, ou une phrase, et renvoyer directement le mot/phrase converti(e). 
 
-\begin{figure}[h]
-\centering\includegraphics[scale=0.5]{encrypt_binaire}
+\begin{figure}[!h]
+\centering\includegraphics[scale=0.5]{encrypt_bin}
 \caption{Fonctions de conversion en binaire}
+
 \end{figure}
 
-%------------------------------------------------
 
+%------------------------------------------------
 \subsection{Decrypt}\index{Decrypter}
 
 \paragraph{}Finalement, pour réaliser l'opération inverse, c'est à dire de convertir un binaire en caractère, nous avons écrit la fonction \textbf{decrypt\_binaire()} qui reçoit un nombre binaire. Cette méthode va en premier lieu convertir le nombre en décimal. Puis appeler le second dictionnaire pour lui demander quel caractère est associé au nombre. Enfin, elle va retourner le caractère trouvé. De façon similaire à encryp\_mot\_binaire(), nous avons écrit \textbf{decrypt\_mot\_binaire(}) qui à partir d'une phrase ou un mot binaire de taille \% NB\_BIT, va retourner les caractères correspondant.
 
-\begin{figure}[h]
+\begin{figure}[!h]
 \centering\includegraphics[scale=0.5]{decrypt_binaire}
 \caption{Fonctions de conversion en caractère}
+\label{fig:nonfloat}
 \end{figure}
 
 %------------------------------------------------
@@ -139,7 +140,7 @@ Une fois ces opérations terminées, le caractère en binaire sera renvoyé.
 \paragraph{}La fonction \textbf{ouExclusif(A,B)} réalise le ou exclusif en binaire, elle prend en compte deux binaires.
 \vspace{0.5cm}On parcourt le premier binaire bit à bit, on compare le bit avec le bit de l'autre binaire. S'ils sont égals et que l'un d'eux est égal à 1, on retourne 0. Sinon si l'un deux est égal à 1 on retourne 1. Dans les autres cas on retourne 0. Une fois terminé, nous avons le résultat de l'addition binaire.
 
-\begin{figure}[h]
+\begin{figure}[!h]
 \centering\includegraphics[scale=0.5]{ouExclusif}
 \caption{ou exclusif(XOR)}
 \end{figure}
@@ -150,7 +151,7 @@ Une fois ces opérations terminées, le caractère en binaire sera renvoyé.
 
 \paragraph{}La fonction \textbf{function()} prend en paramètre un message msg de 2 caractères ainsi qu'une clé Key de 2 caractères convertie en binaire. On converti le message en binaire puis on réalise le décalage binaire. Ce dernier se réalise de cette manière : on crée une nouvelle variable, on lui ajoute tous les bits du message binaire en commençant par le second bit. Une fois arrivé à la fin, on lui ajoute le premier bit du message réalisant ainsi le décalage binaire gauche.
 
-\begin{figure}[h]
+\begin{figure}[!h]
 \centering\includegraphics[scale=0.5]{function}
 \caption{Fonction de Feistel}
 \end{figure}
@@ -162,11 +163,12 @@ Une fois ces opérations terminées, le caractère en binaire sera renvoyé.
 \subsection{Encrypt}
 
 \paragraph{}Le réseau de Feistel est symbolisé par la fonction \textbf{encrypt\_feistel()} qui à partir d'un bloc et d'une clé, va chiffrer un texte. Tout d'abord, nous divisons le bloc en deux, le bloc gauche et le bloc droit. Pour chaque caractère de la clé (i.e. 4 boucles), nous effectuons les opérations suivantes. On réalise la copie du bloc droit, on prend les deux premier caractères de la clé et on les stocke, on décale la clé de 1 caractère, on transforme le bloc droit à travers la fonction function() à laquelle on lui envoie le bloc droit lui-même ainsi que la clé convertie en binaire. Une fois cela réalisé, on effectue le ou exclusif avec le nouveau bloc droit (résultat de la fonction function()) et la partie gauche. Le résultat obtenu est ainsi converti en caractère, on stocke la copie du bloc droit dans le bloc gauche, et on réitère ce traitement. Nous obtenons finalement notre bloc chiffré à partir de la clé.
-
-\begin{figure}[h]
+\clearpage
+\begin{figure}[!h]
 \centering\includegraphics[scale=0.5]{feistel}
 \caption{Réseau de Feistel pour chiffrer}
 \end{figure}
+
 
 %------------------------------------------------
 
@@ -174,7 +176,7 @@ Une fois ces opérations terminées, le caractère en binaire sera renvoyé.
 
 \paragraph{}Dans l'optique inverse, nous avons conçu \textbf{decrypt\_Feistel()}, qui à partir d'un bloc chiffré et d'une clé va déchiffrer le message. L'opération est similaire à encrypt\_Feistel(), nous divisons notre bloc de 4 caractères en deux blocs : gauche et droite. À la différence de encrypt\_Feistel(), nous parcourons la clé à l'envers (i.e. « XK » → « CX » → « XC » → « KX ») mais nous effectuons les mêmes opérations : le bloc droit passe par function(), puis le résultat obtenu subit un ou exclusif avec le bloc gauche, et finalement on inverse le bloc gauche avec le bloc droit.
 
-\begin{figure}[h]
+\begin{figure}[!h]
 \centering\includegraphics[scale=0.5]{dechiffrement_feistel}
 \caption{Déchiffrement par Feistel}
 \end{figure}
@@ -186,7 +188,7 @@ Une fois ces opérations terminées, le caractère en binaire sera renvoyé.
 \paragraph{}Afin d'illustrer un exemple concret de fonctionnement du réseau de Feistel, nous avons procédé à une fonction main() permettant de simuler l'échange d'un texte chiffré.
 \vspace{0.5cm}Nous choisissons un mot arbitraire « AAAA??BB » et une clé « KXCX ». Nous nous assurons que les lettres soient en lettres majuscules (mot.upper()). Nous « préparons » le texte de sorte que sa taille soit un multiple de 4 par le fonction tailleTexteMod4() qui va ajouter des espaces à la fin du mot. Par la suite, nous chiffrons bloc par bloc le texte (taille de 4 caractères). Nous obtenons ainsi « MYMWEQG, ». Et en effectuant l'opération inverse par la fonction decrypt\_feistel() nous ré-obtenons « AAAA??BB ».
 
-\begin{figure}[h]
+\begin{figure}[!h]
 \centering\includegraphics[scale=0.5]{exemple}
 \caption{Exemple de chiffrement}
 \end{figure}
@@ -197,8 +199,8 @@ Une fois ces opérations terminées, le caractère en binaire sera renvoyé.
 
 \paragraph{}Maintenant intéressons nous au chiffrement et déchiffrement en mode CBC. Tout d'abord, nous avons la fonction vecteur\_initialisation() qui va prendre au hasard 4 caractères dans le dictionnaire pour former la clé. Une fois cette clé formée, nous effectuons un ou exclusif avec le texte en clair. Avec le resultat, nous opérons avec la fonction du réseau de feistel. Une fois l'opération terminée, nous recommençons mais en prenant cette fois-ci le résultat de la fonction et le texte en clair.
 
-\begin{figure}[h]
-\centering\includegraphics[scale=0.5]{CBC}
+\begin{figure}[!h]
+\centering\includegraphics[scale=0.5]{cbc}
 \caption{CBC}
 \end{figure}
 
@@ -225,24 +227,28 @@ Cette dernière fonctionne ainsi : elle reçoit en paramètre un nombre à test
 \vspace{0.5cm}Retournons à la génération des clés, nous avons grâce aux fonctions précédentes, 2 nombres entiers que nous nommerons p et q. Nous calculons n = p*q puis phi(n) = (p-1)*(q-1). Maintenant nous cherchons e, qui est un nombre premier aléatoire entre 1 et phi(n). Intéressons nous à la fonction e\_aleatoire(phi). Cette fonction tire un nombre premier aléatoire entre 2 et phi-1 uniquement si ce nombre ne possède aucun diviseur commun avec phi.
 \vspace{0.5cm}Maintenant que nous possédons la clé privée (i.e. e), nous pouvons éditer la clé publique	. Pour cela 
 nous devons chercher d, l'inverse modulaire de phi modulo n. Nous faisons appel à la fonction \textbf{inverse\_modulaire(e,phi)}. Cette fonction utilise l’algorithme suivant :
-\\TODO
-\\- les constantes u0 = 1, u1 = 0, v0=0 et v1 = 1
-\\- r0 = (e * u0) + (phi * v0)
-\\- r1 = (e * u1) + (phi * v1)
-\\- Tant que r1 est différent de 0 nous faisons
-\\	- q = r0 / r1
-\\	- r = r0
-\\	-u = u0
-\\	-v = v0
-\\	- on affecte à r0 la valeur de r1, ainsi que u0 reçoit u1 et v0 vaut v1.
-\\	- r1 = r – (q * r1)
-\\	- u1 = u – (q * u1)
-\\	- v1 = v – (q*v1)
-\\- Une fois terminé,  nous incrémentons b à u0 afin qu'il devienne positif
-\\- On retourne u, l'inverse modulaire de phi.
+\begin{itemize}
+\item les constantes u0 = 1, u1 = 0, v0=0 et v1 = 1
+\item r0 = (e * u0) + (phi * v0)
+\item r1 = (e * u1) + (phi * v1)
+\item Tant que r1 est différent de 0 nous faisons
+	\begin{itemize}
+	\item q = r0 / r1
+	\item r = r0
+	\item u = u0
+	\item v = v0
+	\item on affecte à r0 la valeur de r1, ainsi que u0 reçoit u1 et v0 vaut v1.
+	\item r1 = r – (q * r1)
+	\item u1 = u – (q * u1)
+	\item v1 = v – (q*v1)
+	\end{itemize}
+
+\item Une fois terminé,  nous incrémentons b à u0 afin qu'il devienne positif
+\item On retourne u, l'inverse modulaire de phi.
+\end{itemize}
 \vspace{0.5cm}La fonction génération retourne le couple e,d,n qui comporte clé publique/privée pour le futur utilisateur.
 
-\begin{figure}[h]
+\begin{figure}[!h]
 \centering\includegraphics[scale=0.5]{placeholder}
 \caption{Figure caption}
 \end{figure}
