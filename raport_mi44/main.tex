@@ -162,7 +162,7 @@ Une fois ces opérations terminées, le caractère en binaire sera renvoyé.
 
 \subsection{Chiffrer}
 
-\paragraph{}Le réseau de Feistel est symbolisé par la fonction \textbf{encrypt\_feistel()} qui à partir d'un bloc et d'une clé, va chiffrer un texte. Tout d'abord, nous divisons le bloc en deux, le bloc gauche et le bloc droit. Pour chaque caractère de la clé (i.e. 4 boucles), nous effectuons les opérations suivantes. On réalise la copie du bloc droit, on prend les deux premier caractères de la clé et on les stocke, on décale la clé de 1 caractère, on transforme le bloc droit à travers la fonction function() à laquelle on lui envoie le bloc droit lui-même ainsi que la clé convertie en binaire. Une fois cela réalisé, on effectue le ou exclusif avec le nouveau bloc droit (résultat de la fonction function()) et la partie gauche. Le résultat obtenu est ainsi converti en caractère, on stocke la copie du bloc droit dans le bloc gauche, et on réitère ce traitement. Nous obtenons finalement notre bloc chiffré à partir de la clé.
+\paragraph{}Le réseau de Feistel est symbolisé par la fonction \textbf{encrypt\_feistel()} qui à partir d'un bloc et d'une clé, va chiffrer un texte. Tout d'abord, nous divisons le bloc en deux, le bloc gauche et le bloc droit. Pour chaque caractère de la clé (i.e. 4 boucles), nous effectuons les opérations suivantes. On réalise la copie du bloc droit, on prend les deux premiers caractères de la clé et on les stocke, on décale la clé de 1 caractère, on transforme le bloc droit à travers la fonction function() à laquelle on lui envoie le bloc droit lui-même ainsi que la clé convertie en binaire. Une fois cela réalisé, on effectue le ou exclusif avec le nouveau bloc droit (résultat de la fonction function()) et la partie gauche. Le résultat obtenu est ainsi converti en caractère, on stocke la copie du bloc droit dans le bloc gauche, et on réitère ce traitement. Nous obtenons finalement notre bloc chiffré à partir de la clé.
 \clearpage
 \begin{figure}[!h]
 \centering\includegraphics[scale=0.5]{feistel}
@@ -220,7 +220,7 @@ Une fois ces opérations terminées, le caractère en binaire sera renvoyé.
 
 \section{Le programme C}
 
-\paragraph{}La fonction centrale de ce programme est la fonction \textbf{generation()} permettant d'éditer l'ensemble des clés
+\paragraph{}La fonction centrale de ce programme est la fonction \textbf{generation()} permettant d'éditer l'ensemble des clés.
 \\Tout d'abord, nous choisissons 2 nombres premiers aléatoires à l'aide de la fonction \textbf{get\_random()} qui va tirer au hasard un nombre puis va vérifier s'il est premier grâce à la méthode \textbf{lucas\_lehmer()}.
 Cette dernière fonctionne ainsi : elle reçoit en paramètre un nombre à tester ainsi qu'un nombre de test qui par défaut est 7. Ce nombre correspond aux nombres de boucles de test que nous réalisons pour tester la primalité du nombre. Tout d'abord si le nombre à tester, que nous appellerons n, est inférieur à 1 le test retourne faux. Ainsi que si n est égal à 2 le test retourne vrai. Nous arrivons dans la boucle principale où le traitement sera réitéré plusieurs fois. En premier lieu nous choisissons un nombre aléatoire entre 3 (car nous excluons 1 et 2) et n-2 . Nous réalisons l’exponentiation modulaire de a\^n-1 mod n. Si le résultat est différent de 1,  on retourne faux. Sinon nous établissons la liste des primitifs de n(cf plus bas la description de la fonction \textbf{primes()}). Nous parcourons cette liste et à chaque primitif nous réalisons a\^(n-1)/q mod n. Si le résultat est égal à 1, nous retournons faux. A la fin de la boucle, si le test n'a retourné aucune valeur, nous finissons par le retour de vrai, car nous avons trouvé que n est un nombre entier.
 \\\\\\Fonction \textbf{primes()}. Cette fonction permet de trouver la liste des entiers primifs d'un nombre entier. Tout d'abord, nous allouons un tableau, et un indice de départ d égal à 2 (premier nombre premier). Nous entrons ensuite dans la boucle while principale où la condition est tant que d² ≤ n , avec n le nombre premier. Dans cette boucle, nous entrons dans une sous-boucle while  où la condition est (n \% d) == 0. Si la condition est respectée, on ajoute d à la liste. Puis on divise n par d, en gardant la partie entière. On sort de la sous-boucle while , on incrémente d et on recommence. Lors de la sortie de la boucle principale while, si n>1 on ajoute n à la liste des entiers primitifs, dans tous les cas on retourne la liste.
@@ -266,19 +266,19 @@ Cette dernière fonctionne ainsi : elle reçoit en paramètre un nombre à test
 
 \subsection{Etape 2}
 \paragraph{}Une fois le message lu, B compare si le message reçu est égal à « AB?! ». Si tel est le cas, B prépare le message « AB OK » pour A. Il le chiffre de la même manière que A en faisant C = M\^d mod n avec ( d,n) la clé publique de A.
-\\\\A reçoit le message, le déchiffre et le compare à « AB OK ». S'ils sont similaires, on passe à l'étape 3
+\\\\A reçoit le message, le déchiffre et le compare à « AB OK ». S'ils sont similaires, on passe à l'étape 3.
 
 \subsection{Etape 3}
 \paragraph{}A génère 4 caractères aléatoires à partir de son dictionnaire. Puis il les envoie à B en utilisant le protocole RSA.  B les déchiffre, puis les chiffre pour les renvoyer à A. A son tour, A déchiffre pour vérifier que le message a bien été reçu.
 
 \subsection{Etape 4}
 \paragraph{}Puisque A et B possède le même mot de passe, on va pouvoir effectuer les opérations suivantes. On effectue le ou exclusif de « AB OK » et du mot de passe. Puisque que le message possède une taille plus grande que le mot de passe ( 4 caractères contre 5), nous nous sommes adaptés à la fonction ouExclusif(). En effet nous effectuons un ou exclusif uniquement avec les caractères nécessaires en partant de la droite du message. \\Exemple :
-\\\\m}AB OK → message
+\\\\}AB OK → message
 \\ABCD → mot de passe
 \\Nous alignons à droite le mot de passe
 \\\\AB OK
-\\ABCD
-\\puis nous découpons le messages
+\\-ABCD
+\\puis nous découpons le message
 \\B OK
 \\ABCD
 \\Maintenant nous effectuons un ou exclusif de B OK et ABCD.

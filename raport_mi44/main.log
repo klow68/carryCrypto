@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.1.19)  20 MAY 2015 16:36
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.12.16)  20 MAY 2015 22:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **main.tex
 (./main.tex
 LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 78 languages loaded.
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
 (/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
 Document Class: book 2007/10/19 v1.4h Standard LaTeX document class
 (/usr/share/texlive/texmf-dist/tex/latex/base/fleqn.clo
@@ -145,8 +145,8 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
 )
-(/usr/share/texlive/texmf-dist/tex/latex/lipsum/lipsum.sty
-Package: lipsum 2011/04/14 v1.2 150 paragraphs of Lorem Ipsum dummy text
+(/home/flodov/texmf/tex/latex/lipsum/lipsum.sty
+Package: lipsum 2014/07/27 v1.3 150 paragraphs of Lorem Ipsum dummy text
 \c@lips@count=\count104
 )
 (/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
@@ -399,11 +399,13 @@ File: babel.def 2013/12/03 3.9h Babel common definitions
 \babel@savecnt=\count124
 \U@D=\dimen166
 )
+\l@british = a dialect from \language\l@english 
+\l@UKenglish = a dialect from \language\l@english 
 \l@canadian = a dialect from \language\l@american 
 \l@australian = a dialect from \language\l@british 
 \l@newzealand = a dialect from \language\l@british 
 ))
-(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
+(/home/flodov/texmf/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \labelindent=\skip46
 \enit@outerparindent=\dimen167
@@ -517,15 +519,15 @@ Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
 File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
 ))
-(/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.sty
-Package: biblatex 2013/11/25 v2.8a programmable bibliographies (PK/JW/AB)
+(/home/flodov/texmf/tex/latex/biblatex/latex/biblatex.sty
+Package: biblatex 2015/04/19 v3.0 programmable bibliographies (PK/JW/AB)
 
-(/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex2.sty
-Package: biblatex2 2013/11/25 v2.8a programmable bibliographies (biber) (PK/JW/
-AB)
+(/home/flodov/texmf/tex/latex/biblatex/latex/biblatex2.sty
+Package: biblatex2 2015/04/19 v3.0 programmable bibliographies (biber) (PK/JW/A
+B)
 
-(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
-Package: etoolbox 2011/01/03 v2.1 e-TeX tools for LaTeX
+(/home/flodov/texmf/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2015/05/04 v2.2 e-TeX tools for LaTeX (JAW)
 
 (/usr/share/texlive/texmf-dist/tex/latex/etex-pkg/etex.sty
 Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
@@ -551,11 +553,11 @@ Package etexcmds Info: Could not find \expanded.
 (etexcmds)             that some package has redefined \expanded.
 (etexcmds)             In the latter case, load this package earlier.
 )))
-(/usr/share/texlive/texmf-dist/tex/latex/logreq/logreq.sty
+(/home/flodov/texmf/tex/latex/logreq/logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
 \lrq@indent=\count135
 
-(/usr/share/texlive/texmf-dist/tex/latex/logreq/logreq.def
+(/home/flodov/texmf/tex/latex/logreq/logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
@@ -605,13 +607,12 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 \blx@sectionciteorder@0=\count173
 \labelnumberwidth=\skip48
 \labelalphawidth=\skip49
-\shorthandwidth=\skip50
-\biblabelsep=\skip51
-\bibitemsep=\skip52
-\bibnamesep=\skip53
-\bibinitsep=\skip54
-\bibparsep=\skip55
-\bibhang=\skip56
+\biblabelsep=\skip50
+\bibitemsep=\skip51
+\bibnamesep=\skip52
+\bibinitsep=\skip53
+\bibparsep=\skip54
+\bibhang=\skip55
 \blx@bcfin=\read2
 \blx@bcfout=\write4
 \c@mincomprange=\count174
@@ -620,7 +621,7 @@ Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
 
-(/usr/share/texlive/texmf-dist/tex/latex/biblatex/blx-dm.def)
+(/home/flodov/texmf/tex/latex/biblatex/latex/blx-dm.def)
 Package biblatex Info: Trying to load biblatex style data model...
 Package biblatex Info: ... file 'alphabetic.dbx' not found.
 Package biblatex Info: Trying to load biblatex custom data model...
@@ -655,12 +656,12 @@ Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
 \c@savednameb=\count204
 \c@namec=\count205
 \c@savednamec=\count206
-\c@shortauthor=\count207
-\c@savedshortauthor=\count208
-\c@shorteditor=\count209
-\c@savedshorteditor=\count210
-\c@translator=\count211
-\c@savedtranslator=\count212
+\c@translator=\count207
+\c@savedtranslator=\count208
+\c@shortauthor=\count209
+\c@savedshortauthor=\count210
+\c@shorteditor=\count211
+\c@savedshorteditor=\count212
 \c@labelname=\count213
 \c@savedlabelname=\count214
 \c@institution=\count215
@@ -692,16 +693,22 @@ Normal \count register pool exhausted, switching to extended pool.
 \c@savedlanguage=\count283
 \c@pageref=\count284
 \c@savedpageref=\count285
+\shorthandwidth=\skip56
+\shortjournalwidth=\skip57
+\shortserieswidth=\skip58
+\shorttitlewidth=\skip59
+\shortauthorwidth=\skip60
+\shorteditorwidth=\skip61
 Package biblatex Info: Trying to load compatibility code...
 Package biblatex Info: ... file 'blx-compat.def' found.
 
-(/usr/share/texlive/texmf-dist/tex/latex/biblatex/blx-compat.def
-File: blx-compat.def 2013/11/25 v2.8a biblatex compatibility (PK/JW/AB)
+(/home/flodov/texmf/tex/latex/biblatex/latex/blx-compat.def
+File: blx-compat.def 2015/04/19 v3.0 biblatex compatibility (PK/JW/AB)
 )
 Package biblatex Info: Trying to load generic definitions...
 Package biblatex Info: ... file 'biblatex.def' found.
 
-(/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.def
+(/home/flodov/texmf/tex/latex/biblatex/latex/biblatex.def
 File: biblatex.def 
 \c@textcitecount=\count286
 \c@textcitetotal=\count287
@@ -714,21 +721,21 @@ File: biblatex.def
 Package biblatex Info: Trying to load bibliography style 'alphabetic'...
 Package biblatex Info: ... file 'alphabetic.bbx' found.
 
-(/usr/share/texlive/texmf-dist/tex/latex/biblatex/bbx/alphabetic.bbx
-File: alphabetic.bbx 2013/11/25 v2.8a biblatex bibliography style (PK/JW/AB)
+(/home/flodov/texmf/tex/latex/biblatex/latex/bbx/alphabetic.bbx
+File: alphabetic.bbx 2015/04/19 v3.0 biblatex bibliography style (PK/JW/AB)
 Package biblatex Info: Trying to load bibliography style 'standard'...
 Package biblatex Info: ... file 'standard.bbx' found.
 
-(/usr/share/texlive/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
-File: standard.bbx 2013/11/25 v2.8a biblatex bibliography style (PK/JW/AB)
+(/home/flodov/texmf/tex/latex/biblatex/latex/bbx/standard.bbx
+File: standard.bbx 2015/04/19 v3.0 biblatex bibliography style (PK/JW/AB)
 \c@bbx:relatedcount=\count293
 \c@bbx:relatedtotal=\count294
 ))
 Package biblatex Info: Trying to load citation style 'numeric'...
 Package biblatex Info: ... file 'numeric.cbx' found.
 
-(/usr/share/texlive/texmf-dist/tex/latex/biblatex/cbx/numeric.cbx
-File: numeric.cbx 2013/11/25 v2.8a biblatex citation style (PK/JW/AB)
+(/home/flodov/texmf/tex/latex/biblatex/latex/cbx/numeric.cbx
+File: numeric.cbx 2015/04/19 v3.0 biblatex citation style (PK/JW/AB)
 Package biblatex Info: Redefining '\cite'.
 Package biblatex Info: Redefining '\parencite'.
 Package biblatex Info: Redefining '\footcite'.
@@ -744,7 +751,7 @@ Package biblatex Info: Redefining '\smartcites'.
 Package biblatex Info: Trying to load configuration file...
 Package biblatex Info: ... file 'biblatex.cfg' found.
 
-(/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.cfg
+(/home/flodov/texmf/tex/latex/biblatex/latex/biblatex.cfg
 File: biblatex.cfg 
 )
 
@@ -757,12 +764,12 @@ Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Bcount=\count296
 \calc@Adimen=\dimen182
 \calc@Bdimen=\dimen183
-\calc@Askip=\skip57
-\calc@Bskip=\skip58
+\calc@Askip=\skip62
+\calc@Bskip=\skip63
 LaTeX Info: Redefining \setlength on input line 76.
 LaTeX Info: Redefining \addtolength on input line 77.
 \calc@Ccount=\count297
-\calc@Cskip=\skip59
+\calc@Cskip=\skip64
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty
 Package: makeidx 2000/03/29 v1.0m Standard LaTeX package
@@ -772,20 +779,20 @@ Package: makeidx 2000/03/29 v1.0m Standard LaTeX package
 
 
 Writing index file main.idx
-(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titletoc.sty
+(/home/flodov/texmf/tex/latex/tex/latex/titlesec/titletoc.sty
 Package: titletoc 2011/12/15 v1.6 TOC entries
 \ttl@leftsep=\dimen184
 )
 (/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
-\fancy@headwidth=\skip60
-\f@ncyO@elh=\skip61
-\f@ncyO@erh=\skip62
-\f@ncyO@olh=\skip63
-\f@ncyO@orh=\skip64
-\f@ncyO@elf=\skip65
-\f@ncyO@erf=\skip66
-\f@ncyO@olf=\skip67
-\f@ncyO@orf=\skip68
+\fancy@headwidth=\skip65
+\f@ncyO@elh=\skip66
+\f@ncyO@erh=\skip67
+\f@ncyO@olh=\skip68
+\f@ncyO@orh=\skip69
+\f@ncyO@elf=\skip70
+\f@ncyO@erf=\skip71
+\f@ncyO@olf=\skip72
+\f@ncyO@orf=\skip73
 )
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
@@ -804,9 +811,9 @@ Package: amsthm 2004/08/06 v2.20
 \thm@headfont=\toks39
 \thm@notefont=\toks40
 \thm@headpunct=\toks41
-\thm@preskip=\skip69
-\thm@postskip=\skip70
-\thm@headsep=\skip71
+\thm@preskip=\skip74
+\thm@postskip=\skip75
+\thm@headsep=\skip76
 \dth@everypar=\toks42
 )
 \c@notation=\count298
@@ -817,7 +824,7 @@ Package: amsthm 2004/08/06 v2.20
 \c@vocabulary=\count303
 \c@definitionT=\count304
 
-(/usr/share/texlive/texmf-dist/tex/latex/mdframed/mdframed.sty
+(/home/flodov/texmf/tex/latex/tex/latex/mdframed/mdframed.sty
 Package: mdframed 2013/07/01 1.9b: mdframed
 
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/xparse/xparse.sty
@@ -885,12 +892,12 @@ Package: l3skip 2013/07/28 v4581 L3 Dimensions and skips
 \l_tmpb_dim=\dimen188
 \g_tmpa_dim=\dimen189
 \g_tmpb_dim=\dimen190
-\c_zero_skip=\skip72
-\c_max_skip=\skip73
-\l_tmpa_skip=\skip74
-\l_tmpb_skip=\skip75
-\g_tmpa_skip=\skip76
-\g_tmpb_skip=\skip77
+\c_zero_skip=\skip77
+\c_max_skip=\skip78
+\l_tmpa_skip=\skip79
+\l_tmpb_skip=\skip80
+\g_tmpa_skip=\skip81
+\g_tmpb_skip=\skip82
 \c_zero_muskip=\muskip12
 \c_max_muskip=\muskip13
 \l_tmpa_muskip=\muskip14
@@ -1010,52 +1017,52 @@ Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
 \c@abspage=\count334
 Package zref Info: New property: abspage on input line 62.
 )
-(/usr/share/texlive/texmf-dist/tex/latex/needspace/needspace.sty
+(/home/flodov/texmf/tex/latex/needspace/needspace.sty
 Package: needspace 2010/09/12 v1.3d reserve vertical space
 )
-\mdf@templength=\skip78
+\mdf@templength=\skip83
 \c@mdf@globalstyle@cnt=\count335
-\mdf@skipabove@length=\skip79
-\mdf@skipbelow@length=\skip80
-\mdf@leftmargin@length=\skip81
-\mdf@rightmargin@length=\skip82
-\mdf@innerleftmargin@length=\skip83
-\mdf@innerrightmargin@length=\skip84
-\mdf@innertopmargin@length=\skip85
-\mdf@innerbottommargin@length=\skip86
-\mdf@splittopskip@length=\skip87
-\mdf@splitbottomskip@length=\skip88
-\mdf@outermargin@length=\skip89
-\mdf@innermargin@length=\skip90
-\mdf@linewidth@length=\skip91
-\mdf@innerlinewidth@length=\skip92
-\mdf@middlelinewidth@length=\skip93
-\mdf@outerlinewidth@length=\skip94
-\mdf@roundcorner@length=\skip95
-\mdf@footenotedistance@length=\skip96
-\mdf@userdefinedwidth@length=\skip97
-\mdf@needspace@length=\skip98
-\mdf@frametitleaboveskip@length=\skip99
-\mdf@frametitlebelowskip@length=\skip100
-\mdf@frametitlerulewidth@length=\skip101
-\mdf@frametitleleftmargin@length=\skip102
-\mdf@frametitlerightmargin@length=\skip103
-\mdf@shadowsize@length=\skip104
-\mdf@extratopheight@length=\skip105
-\mdf@subtitleabovelinewidth@length=\skip106
-\mdf@subtitlebelowlinewidth@length=\skip107
-\mdf@subtitleaboveskip@length=\skip108
-\mdf@subtitlebelowskip@length=\skip109
-\mdf@subtitleinneraboveskip@length=\skip110
-\mdf@subtitleinnerbelowskip@length=\skip111
-\mdf@subsubtitleabovelinewidth@length=\skip112
-\mdf@subsubtitlebelowlinewidth@length=\skip113
-\mdf@subsubtitleaboveskip@length=\skip114
-\mdf@subsubtitlebelowskip@length=\skip115
-\mdf@subsubtitleinneraboveskip@length=\skip116
-\mdf@subsubtitleinnerbelowskip@length=\skip117
+\mdf@skipabove@length=\skip84
+\mdf@skipbelow@length=\skip85
+\mdf@leftmargin@length=\skip86
+\mdf@rightmargin@length=\skip87
+\mdf@innerleftmargin@length=\skip88
+\mdf@innerrightmargin@length=\skip89
+\mdf@innertopmargin@length=\skip90
+\mdf@innerbottommargin@length=\skip91
+\mdf@splittopskip@length=\skip92
+\mdf@splitbottomskip@length=\skip93
+\mdf@outermargin@length=\skip94
+\mdf@innermargin@length=\skip95
+\mdf@linewidth@length=\skip96
+\mdf@innerlinewidth@length=\skip97
+\mdf@middlelinewidth@length=\skip98
+\mdf@outerlinewidth@length=\skip99
+\mdf@roundcorner@length=\skip100
+\mdf@footenotedistance@length=\skip101
+\mdf@userdefinedwidth@length=\skip102
+\mdf@needspace@length=\skip103
+\mdf@frametitleaboveskip@length=\skip104
+\mdf@frametitlebelowskip@length=\skip105
+\mdf@frametitlerulewidth@length=\skip106
+\mdf@frametitleleftmargin@length=\skip107
+\mdf@frametitlerightmargin@length=\skip108
+\mdf@shadowsize@length=\skip109
+\mdf@extratopheight@length=\skip110
+\mdf@subtitleabovelinewidth@length=\skip111
+\mdf@subtitlebelowlinewidth@length=\skip112
+\mdf@subtitleaboveskip@length=\skip113
+\mdf@subtitlebelowskip@length=\skip114
+\mdf@subtitleinneraboveskip@length=\skip115
+\mdf@subtitleinnerbelowskip@length=\skip116
+\mdf@subsubtitleabovelinewidth@length=\skip117
+\mdf@subsubtitlebelowlinewidth@length=\skip118
+\mdf@subsubtitleaboveskip@length=\skip119
+\mdf@subsubtitlebelowskip@length=\skip120
+\mdf@subsubtitleinneraboveskip@length=\skip121
+\mdf@subsubtitleinnerbelowskip@length=\skip122
 
-(/usr/share/texlive/texmf-dist/tex/latex/mdframed/md-frame-0.mdf
+(/home/flodov/texmf/tex/latex/tex/latex/mdframed/md-frame-0.mdf
 File: md-frame-0.mdf 2013/07/01\ 1.9b: md-frame-0
 )
 \mdf@frametitlebox=\box53
@@ -1063,33 +1070,33 @@ File: md-frame-0.mdf 2013/07/01\ 1.9b: md-frame-0
 \mdf@splitbox@one=\box55
 \mdf@splitbox@two=\box56
 \mdf@splitbox@save=\box57
-\mdfsplitboxwidth=\skip118
-\mdfsplitboxtotalwidth=\skip119
-\mdfsplitboxheight=\skip120
-\mdfsplitboxdepth=\skip121
-\mdfsplitboxtotalheight=\skip122
-\mdfframetitleboxwidth=\skip123
-\mdfframetitleboxtotalwidth=\skip124
-\mdfframetitleboxheight=\skip125
-\mdfframetitleboxdepth=\skip126
-\mdfframetitleboxtotalheight=\skip127
-\mdffootnoteboxwidth=\skip128
-\mdffootnoteboxtotalwidth=\skip129
-\mdffootnoteboxheight=\skip130
-\mdffootnoteboxdepth=\skip131
-\mdffootnoteboxtotalheight=\skip132
-\mdftotallinewidth=\skip133
-\mdfboundingboxwidth=\skip134
-\mdfboundingboxtotalwidth=\skip135
-\mdfboundingboxheight=\skip136
-\mdfboundingboxdepth=\skip137
-\mdfboundingboxtotalheight=\skip138
-\mdf@freevspace@length=\skip139
-\mdf@horizontalwidthofbox@length=\skip140
-\mdf@verticalmarginwhole@length=\skip141
-\mdf@horizontalspaceofbox=\skip142
-\mdfsubtitleheight=\skip143
-\mdfsubsubtitleheight=\skip144
+\mdfsplitboxwidth=\skip123
+\mdfsplitboxtotalwidth=\skip124
+\mdfsplitboxheight=\skip125
+\mdfsplitboxdepth=\skip126
+\mdfsplitboxtotalheight=\skip127
+\mdfframetitleboxwidth=\skip128
+\mdfframetitleboxtotalwidth=\skip129
+\mdfframetitleboxheight=\skip130
+\mdfframetitleboxdepth=\skip131
+\mdfframetitleboxtotalheight=\skip132
+\mdffootnoteboxwidth=\skip133
+\mdffootnoteboxtotalwidth=\skip134
+\mdffootnoteboxheight=\skip135
+\mdffootnoteboxdepth=\skip136
+\mdffootnoteboxtotalheight=\skip137
+\mdftotallinewidth=\skip138
+\mdfboundingboxwidth=\skip139
+\mdfboundingboxtotalwidth=\skip140
+\mdfboundingboxheight=\skip141
+\mdfboundingboxdepth=\skip142
+\mdfboundingboxtotalheight=\skip143
+\mdf@freevspace@length=\skip144
+\mdf@horizontalwidthofbox@length=\skip145
+\mdf@verticalmarginwhole@length=\skip146
+\mdf@horizontalspaceofbox=\skip147
+\mdfsubtitleheight=\skip148
+\mdfsubsubtitleheight=\skip149
 \c@mdfcountframes=\count336
 
 ****** mdframed patching \endmdf@trivlist
@@ -1114,8 +1121,8 @@ File: md-frame-0.mdf 2013/07/01\ 1.9b: md-frame-0
 \c@mdf@zref@counter=\count340
 Package zref Info: New property: mdf@pagevalue on input line 895.
 )
-\esp=\skip145
-\ecart=\skip146
+\esp=\skip150
+\ecart=\skip151
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
@@ -1204,7 +1211,7 @@ Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 82.
 )
-\Hy@SectionHShift=\skip147
+\Hy@SectionHShift=\skip152
 )
 
 Package hyperref Warning: Option `backref' has already been used,
@@ -1245,8 +1252,8 @@ The 'ucs' package and biblatex are incompatible.
 
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
-(/usr/share/texlive/texmf-dist/tex/latex/biblatex/lbx/english.lbx
-File: english.lbx 2013/11/25 v2.8a biblatex localization (PK/JW/AB)
+(/home/flodov/texmf/tex/latex/biblatex/latex/lbx/english.lbx
+File: english.lbx 2015/04/19 v3.0 biblatex localization (PK/JW/AB)
 )
 
 Package biblatex Warning: 'babel/polyglossia' detected but 'csquotes' missing.
@@ -1364,7 +1371,7 @@ Package biblatex Info: Trying to load bibliographic data...
 
 
 Package biblatex Warning: File 'main.bbl' is wrong format version - expected 2.
-3.
+5.
 
 Package biblatex Info: ... file 'main.bbl' found.
 (./main.bbl)
@@ -1660,8 +1667,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 268--270
  []
 
 ! Too many }'s.
-l.276 \\\\m}
-            AB OK → message
+<recently read> }
+                 
+l.276 \\\\}
+           AB OK → message
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
@@ -1696,20 +1705,20 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31282 strings out of 493304
- 552750 string characters out of 6139871
- 1069918 words of memory out of 5000000
- 33978 multiletter control sequences out of 15000+600000
+ 31518 strings out of 495028
+ 558093 string characters out of 6181496
+ 1105231 words of memory out of 5000000
+ 33965 multiletter control sequences out of 15000+600000
  75081 words of font info for 174 fonts, out of 8000000 for 9000
- 957 hyphenation exceptions out of 8191
- 58i,11n,55p,10532b,1583s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 14 hyphenation exceptions out of 8191
+ 58i,11n,55p,10532b,1591s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/urw/avantgar/uagd8a.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/urw/avantgar/uagk8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/t
 imes/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (14 pages, 2790955 bytes).
+Output written on main.pdf (14 pages, 2790954 bytes).
 PDF statistics:
  279 PDF objects out of 1000 (max. 8388607)
  220 compressed objects within 3 object streams
