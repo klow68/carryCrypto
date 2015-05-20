@@ -10,11 +10,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {1.2}Binaire}{5}{section.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.2.1}Encrypt}{5}{subsection.1.2.1}
+\contentsline {subsection}{\numberline {1.2.1}Chiffrer}{5}{subsection.1.2.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{}{5}{section*.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.2.2}Decrypt}{6}{subsection.1.2.2}
+\contentsline {subsection}{\numberline {1.2.2}D\IeC {\'e}chiffrer}{6}{subsection.1.2.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{}{6}{section*.4}
 \defcounter {refsection}{0}\relax 
@@ -28,11 +28,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {1.4}R\IeC {\'e}seau de Feistel}{7}{section.1.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.4.1}Encrypt}{7}{subsection.1.4.1}
+\contentsline {subsection}{\numberline {1.4.1}Chiffrer}{7}{subsection.1.4.1}
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{}{7}{section*.7}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.4.2}Decrypt}{8}{subsection.1.4.2}
+\contentsline {subsection}{\numberline {1.4.2}D\IeC {\'e}chiffrer}{8}{subsection.1.4.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{}{8}{section*.8}
 \defcounter {refsection}{0}\relax 
@@ -58,9 +58,9 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{}{12}{section*.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.1}Etape 1}{13}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.1}Etape 1}{12}{subsection.2.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{}{13}{section*.14}
+\contentsline {paragraph}{}{12}{section*.14}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3.2}Etape 2}{13}{subsection.2.3.2}
 \defcounter {refsection}{0}\relax 
@@ -74,7 +74,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {paragraph}{}{13}{section*.17}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.3.5}Etape 5}{14}{subsection.2.3.5}
+\contentsline {subsection}{\numberline {2.3.5}Etape 5}{13}{subsection.2.3.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{}{14}{section*.18}
+\contentsline {paragraph}{}{13}{section*.18}
 \contentsfinish 

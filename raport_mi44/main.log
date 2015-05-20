@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.1.19)  20 MAY 2015 00:57
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.1.19)  20 MAY 2015 15:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1613,35 +1613,32 @@ File: omsptm.fd
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 231.
-
-<Pictures/placeholder.jpg, id=154, 351.3125pt x 193.72375pt>
-File: Pictures/placeholder.jpg Graphic file (type jpg)
-
-<use Pictures/placeholder.jpg>
-Package pdftex.def Info: Pictures/placeholder.jpg used on input line 252.
-(pdftex.def)             Requested size: 175.6558pt x 96.86163pt.
- [12 <./Pictures/placeholder.jpg>] [13]
-<Pictures/encrypt_feistel2.png, id=171, 674.52pt x 467.7475pt>
+ [12]
+<Pictures/encrypt_feistel2.png, id=160, 674.52pt x 467.7475pt>
 File: Pictures/encrypt_feistel2.png Graphic file (type png)
 
 <use Pictures/encrypt_feistel2.png>
-Package pdftex.def Info: Pictures/encrypt_feistel2.png used on input line 293.
+Package pdftex.def Info: Pictures/encrypt_feistel2.png used on input line 288.
 (pdftex.def)             Requested size: 337.25917pt x 233.87317pt.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 297.
- [14 <./Pictures/encrypt_feistel2.png (PNG copy)>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 297.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 292.
+[13] [14 <./Pictures/encrypt_feistel2.png (PNG copy)>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 292.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 297.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 297.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 292.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 292.
 Package logreq Info: Writing requests to 'main.run.xml'.
 \openout1 = `main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31271 strings out of 493304
- 552773 string characters out of 6139871
- 1069841 words of memory out of 5000000
- 33970 multiletter control sequences out of 15000+600000
+ 31264 strings out of 493304
+ 552629 string characters out of 6139871
+ 1068842 words of memory out of 5000000
+ 33966 multiletter control sequences out of 15000+600000
  71353 words of font info for 168 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  58i,11n,55p,10532b,1583s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1651,10 +1648,10 @@ f-dist/fonts/type1/urw/avantgar/uagd8a.pfb></usr/share/texlive/texmf-dist/fonts
 /type1/urw/avantgar/uagk8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/t
 imes/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
 >
-Output written on main.pdf (14 pages, 2806704 bytes).
+Output written on main.pdf (14 pages, 2786027 bytes).
 PDF statistics:
- 277 PDF objects out of 1000 (max. 8388607)
- 218 compressed objects within 3 object streams
- 64 named destinations out of 1000 (max. 500000)
- 33521 words of extra memory for PDF output out of 35830 (max. 10000000)
+ 275 PDF objects out of 1000 (max. 8388607)
+ 217 compressed objects within 3 object streams
+ 63 named destinations out of 1000 (max. 500000)
+ 33516 words of extra memory for PDF output out of 35830 (max. 10000000)
 
