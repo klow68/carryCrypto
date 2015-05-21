@@ -197,7 +197,7 @@ Une fois ces opérations terminées, le caractère en binaire sera renvoyé.
 
 \section{Cipher-bloc Chaining}
 
-\paragraph{}Maintenant intéressons nous au chiffrement et déchiffrement en mode CBC. Tout d'abord, nous avons la fonction vecteur\_initialisation() qui va prendre au hasard 4 caractères dans le dictionnaire pour former la clé. Une fois cette clé formée, nous effectuons un ou exclusif avec le texte en clair. Avec le resultat, nous opérons avec la fonction du réseau de feistel. Une fois l'opération terminée, nous recommençons mais en prenant cette fois-ci le résultat de la fonction et le texte en clair.
+\paragraph{}Maintenant intéressons nous au chiffrement et déchiffrement en mode CBC. Tout d'abord, nous avons la fonction \textbf{vecteur\_initialisation()} qui va prendre au hasard 4 caractères dans le dictionnaire pour former la clé. Une fois cette clé formée, nous effectuons un ou exclusif avec le texte en clair. Avec le resultat, nous opérons avec la fonction du réseau de feistel. Une fois l'opération terminée, nous recommençons mais en prenant cette fois-ci le résultat de la fonction et le texte en clair.
 
 \begin{figure}[!h]
 \centering\includegraphics[scale=0.5]{cbc}
@@ -255,7 +255,7 @@ Cette dernière fonctionne ainsi : elle reçoit en paramètre un nombre à test
 \subsection{Etape 1}
 \paragraph{}A souhaite envoyer le message suivant : « AB ?! » vers B. Pour cela il fait appel à la fonction \textbf{envoie\_message\_to\_B(message)} qui va encoder le message selon le protocole RSA. C'est à dire que nous allons convertir chaque caractère en nombre. Pour cela nous réutilisons le dictionnaire du TP précédent. Maintenant que nous avons un nombre, nous effectuons le calcul suivant : 
 \\soit M le nombre à chiffrer et (d,n) la clé publique de B
-\\C = M\^d mod n
+\\C = $M^d$ mod n
 \\\\\textbf{Nota Bene} : à des fins pratiques, nous utilisons la fonction d'exponentiation modulaire rapide pour limiter l'utilisation du processeur et pour une résultat plus rapide.
 \\\\Une fois notre nombre chiffré, nous recommençons avec les autres caractères du message. Ce qui nous donne une liste de nombres. Nous envoyons cette liste à B qui va commencer le déchiffrement.
 \\Pour cela, B utilise \textbf{decrypt\_message\_from\_A(msg\_crypt)} . Cette fonction va prendre chaque nombre dans la liste reçue et le déchiffrer en utilisant la formule suivante : 
